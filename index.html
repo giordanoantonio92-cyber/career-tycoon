@@ -29,6 +29,51 @@ body {
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
+.avatar-section {
+    text-align: center;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border-radius:15px;
+    padding:20px;
+    border:2px solid rgba(255,215,0,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+
+.avatar-display {
+    font-size: 80px;
+    margin: 10px 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.rank-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffd700;
+    margin: 10px 0;
+}
+
+.rank-progress {
+    background: rgba(0,0,0,0.3);
+    height: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+    border: 1px solid rgba(255,215,0,0.3);
+}
+
+.rank-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
 .stats-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -219,12 +264,73 @@ button:disabled {
     color: #ffd700;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.collection-item {
+    background: rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,215,0,0.2);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.collection-item:hover {
+    border-color: rgba(255,215,0,0.6);
+    background: rgba(0,0,0,0.5);
+    transform: scale(1.05);
+}
+
+.collection-icon {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.collection-name {
+    font-size: 12px;
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.collection-count {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 3px;
+}
+
+.empty-collection {
+    background: rgba(0,0,0,0.2);
+    border: 2px dashed rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    grid-column: 1 / -1;
+}
 </style>
 </head>
 
 <body>
 
 <div class="header">💼 Career Tycoon 🚀</div>
+
+<!-- Avatar Section -->
+<div class="avatar-section">
+    <div style="font-size: 14px; color: #aaa;">Your Career Journey</div>
+    <div class="avatar-display" id="avatar">👶</div>
+    <div class="rank-info">Rank: <span id="rankName">Intern</span></div>
+    <div class="rank-progress">
+        <div class="rank-progress-bar" id="rankProgressBar"></div>
+    </div>
+    <div style="font-size: 11px; color: #aaa;">Progress: $<span id="rankProgress">0</span> / $<span id="rankNeeded">1000</span></div>
+</div>
 
 <div class="stats-bar">
     <div class="stat-card">
@@ -243,6 +349,14 @@ button:disabled {
 <div class="card">
     <button class="big-button green" onclick="work()">💰 Work</button>
     <button class="blue" onclick="daily()">🎁 Daily Bonus: $<span id="dailyAmount">100</span></button>
+</div>
+
+<!-- Collection Showcase -->
+<div class="card">
+    <div class="section-title">🏠 My Collection</div>
+    <div id="collectionDisplay">
+        <div class="empty-collection">No vehicles or houses yet. Start earning!</div>
+    </div>
 </div>
 
 <!-- Vehicles Card -->
@@ -290,6 +404,41 @@ button:disabled {
             <div class="vehicle-income">+$8/sec</div>
             <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-yacht">0</span></div>
             <button class="blue" onclick="buyVehicle('yacht', 800)">Buy $800</button>
+        </div>
+    </div>
+</div>
+
+<!-- Houses Card -->
+<div class="card">
+    <div class="section-title">🏠 Real Estate</div>
+    <div class="vehicle-grid">
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🏠</div>
+            <div class="vehicle-name">Apartment</div>
+            <div class="vehicle-income">+$1/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-apartment">0</span></div>
+            <button class="gold" onclick="buyHouse('apartment', 150)">Buy $150</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🏡</div>
+            <div class="vehicle-name">House</div>
+            <div class="vehicle-income">+$3/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-house">0</span></div>
+            <button class="gold" onclick="buyHouse('house', 400)">Buy $400</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🏰</div>
+            <div class="vehicle-name">Mansion</div>
+            <div class="vehicle-income">+$10/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-mansion">0</span></div>
+            <button class="purple" onclick="buyHouse('mansion', 1500)">Buy $1.5K</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🏢</div>
+            <div class="vehicle-name">Skyscraper</div>
+            <div class="vehicle-income">+$20/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-skyscraper">0</span></div>
+            <button class="blue" onclick="buyHouse('skyscraper', 5000)">Buy $5K</button>
         </div>
     </div>
 </div>
@@ -346,7 +495,7 @@ button:disabled {
     <div class="stats-text">
         Total Earned: $<span id="totalEarned">0</span><br>
         Total Vehicles: <span id="totalVehicles">0</span><br>
-        Total Businesses: <span id="totalBusinesses">0</span><br>
+        Total Properties: <span id="totalProperties">0</span><br>
         Play Time: <span id="playTime">0</span>s
     </div>
 </div>
@@ -366,14 +515,33 @@ let totalEarned = 0;
 let playTime = 0;
 let prestige = 0;
 let prestigeMultiplier = 1;
+let currentRank = 0;
+
+const ranks = [
+    { name: "Intern", avatar: "👶", threshold: 1000 },
+    { name: "Junior Dev", avatar: "👨‍💼", threshold: 5000 },
+    { name: "Senior Dev", avatar: "👨‍💻", threshold: 15000 },
+    { name: "Team Lead", avatar: "👨‍🏫", threshold: 40000 },
+    { name: "Manager", avatar: "💼", threshold: 100000 },
+    { name: "Director", avatar: "🎓", threshold: 250000 },
+    { name: "VP", avatar: "👑", threshold: 500000 },
+    { name: "CEO", avatar: "🦾", threshold: 1000000 }
+];
 
 const vehicles = {
-    car: { cost: 50, income: 0.5, count: 0 },
-    truck: { cost: 100, income: 1, count: 0 },
-    sportsCar: { cost: 200, income: 2, count: 0 },
-    helicopter: { cost: 500, income: 5, count: 0 },
-    yacht: { cost: 800, income: 8, count: 0 },
-    jet: { cost: 1000, income: 10, count: 0 }
+    car: { cost: 50, income: 0.5, count: 0, icon: "🚗" },
+    truck: { cost: 100, income: 1, count: 0, icon: "🚙" },
+    sportsCar: { cost: 200, income: 2, count: 0, icon: "🏎️" },
+    helicopter: { cost: 500, income: 5, count: 0, icon: "🚁" },
+    yacht: { cost: 800, income: 8, count: 0, icon: "🚢" },
+    jet: { cost: 1000, income: 10, count: 0, icon: "✈️" }
+};
+
+const houses = {
+    apartment: { cost: 150, income: 1, count: 0, icon: "🏠" },
+    house: { cost: 400, income: 3, count: 0, icon: "🏡" },
+    mansion: { cost: 1500, income: 10, count: 0, icon: "🏰" },
+    skyscraper: { cost: 5000, income: 20, count: 0, icon: "🏢" }
 };
 
 const upgrades = {
@@ -383,12 +551,56 @@ const upgrades = {
     corporation: { cost: 2000, income: 25, count: 0 }
 };
 
+function updateRank() {
+    for(let i = ranks.length - 1; i >= 0; i--) {
+        if(totalEarned >= ranks[i].threshold) {
+            if(currentRank !== i) {
+                float(`⭐ Promoted to ${ranks[i].name}!`);
+                currentRank = i;
+            }
+            break;
+        }
+    }
+}
+
 function calculateIncome() {
     let base = 1;
     let vehicleIncome = Object.values(vehicles).reduce((sum, v) => sum + (v.count * v.income), 0);
+    let houseIncome = Object.values(houses).reduce((sum, h) => sum + (h.count * h.income), 0);
     let upgradeIncome = Object.values(upgrades).reduce((sum, u) => sum + (u.count * u.income), 0);
-    income = (base + vehicleIncome + upgradeIncome) * (1 + prestige * 0.5);
+    income = (base + vehicleIncome + houseIncome + upgradeIncome) * (1 + prestige * 0.5);
     return income;
+}
+
+function updateCollection() {
+    let items = [];
+    
+    // Add vehicles
+    Object.entries(vehicles).forEach(([key, v]) => {
+        for(let i = 0; i < v.count; i++) {
+            items.push({ icon: v.icon, name: key });
+        }
+    });
+    
+    // Add houses
+    Object.entries(houses).forEach(([key, h]) => {
+        for(let i = 0; i < h.count; i++) {
+            items.push({ icon: h.icon, name: key });
+        }
+    });
+    
+    let html = '';
+    if(items.length === 0) {
+        html = '<div class="empty-collection">No vehicles or houses yet. Start earning!</div>';
+    } else {
+        html = '<div class="collection-grid">';
+        items.forEach(item => {
+            html += `<div class="collection-item"><div class="collection-icon">${item.icon}</div><div class="collection-name">${item.name}</div></div>`;
+        });
+        html += '</div>';
+    }
+    
+    document.getElementById("collectionDisplay").innerHTML = html;
 }
 
 function update(){
@@ -397,10 +609,32 @@ function update(){
     document.getElementById("income").innerText = calculateIncome().toFixed(1);
     document.getElementById("prestige").innerText = prestige;
     
+    // Update avatar and rank
+    updateRank();
+    document.getElementById("avatar").innerText = ranks[currentRank].avatar;
+    document.getElementById("rankName").innerText = ranks[currentRank].name;
+    
+    // Update rank progress
+    let currentThreshold = currentRank > 0 ? ranks[currentRank - 1].threshold : 0;
+    let nextThreshold = ranks[currentRank].threshold;
+    let progress = totalEarned - currentThreshold;
+    let needed = nextThreshold - currentThreshold;
+    let progressPercent = Math.min(100, (progress / needed) * 100);
+    
+    document.getElementById("rankProgress").innerText = formatNumber(Math.max(0, Math.floor(progress)));
+    document.getElementById("rankNeeded").innerText = formatNumber(Math.floor(needed));
+    document.getElementById("rankProgressBar").style.width = progressPercent + "%";
+    
     // Update vehicle counts
     Object.keys(vehicles).forEach(key => {
         const el = document.getElementById(`count-${key}`);
         if(el) el.innerText = vehicles[key].count;
+    });
+    
+    // Update house counts
+    Object.keys(houses).forEach(key => {
+        const el = document.getElementById(`count-${key}`);
+        if(el) el.innerText = houses[key].count;
     });
     
     // Update upgrade counts
@@ -409,21 +643,25 @@ function update(){
         if(el) el.innerText = upgrades[key].count;
     });
     
+    // Update collection display
+    updateCollection();
+    
     // Update stats
     document.getElementById("totalEarned").innerText = formatNumber(Math.floor(totalEarned));
     let totalV = Object.values(vehicles).reduce((sum, v) => sum + v.count, 0);
+    let totalH = Object.values(houses).reduce((sum, h) => sum + h.count, 0);
     let totalB = Object.values(upgrades).reduce((sum, u) => sum + u.count, 0);
     document.getElementById("totalVehicles").innerText = totalV;
-    document.getElementById("totalBusinesses").innerText = totalB;
+    document.getElementById("totalProperties").innerText = totalH;
     document.getElementById("playTime").innerText = Math.floor(playTime);
     
     // Update button states
     document.querySelectorAll("button").forEach(btn => {
-        const cost = parseFloat(btn.textContent.match(/\$[\d,]+/)?.[0]?.replace(/\D/g, '') || 0);
+        const cost = parseFloat(btn.textContent.match(/\$[\d,KM]+/)?.[0]?.replace(/\D/g, '') || 0);
         if(cost > 0) btn.disabled = displayMoney < cost;
     });
     
-    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, vehicles, upgrades, playTime}));
+    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, vehicles, houses, upgrades, playTime, currentRank}));
 }
 
 function work(){
@@ -437,6 +675,15 @@ function buyVehicle(type, baseCost) {
     if (money >= baseCost) {
         money -= baseCost;
         vehicles[type].count++;
+        float(`+1 ${type}`);
+        update();
+    }
+}
+
+function buyHouse(type, baseCost) {
+    if (money >= baseCost) {
+        money -= baseCost;
+        houses[type].count++;
         float(`+1 ${type}`);
         update();
     }
@@ -482,6 +729,7 @@ function prestigeReset() {
         prestige = Math.floor(totalEarned / 10000) + 1;
         money = 0;
         Object.keys(vehicles).forEach(k => vehicles[k].count = 0);
+        Object.keys(houses).forEach(k => houses[k].count = 0);
         Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
         float(`+${prestige}x Prestige!`);
         update();
@@ -494,7 +742,9 @@ function hardReset() {
         totalEarned = 0;
         prestige = 0;
         playTime = 0;
+        currentRank = 0;
         Object.keys(vehicles).forEach(k => vehicles[k].count = 0);
+        Object.keys(houses).forEach(k => houses[k].count = 0);
         Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
         localStorage.removeItem("save");
         localStorage.removeItem("lastDaily");
@@ -516,14 +766,6 @@ setInterval(()=>{
     playTime += 0.1;
 },100);
 
-// Load game every 30 seconds
-setInterval(()=>{
-    let save = JSON.parse(localStorage.getItem("save"));
-    if(save && save.playTime && playTime - save.playTime > 25) {
-        update();
-    }
-}, 30000);
-
 // Load game
 let save = JSON.parse(localStorage.getItem("save"));
 if(save){
@@ -531,7 +773,9 @@ if(save){
     totalEarned = save.totalEarned || 0;
     prestige = save.prestige || 0;
     playTime = save.playTime || 0;
+    currentRank = save.currentRank || 0;
     vehicles = save.vehicles || vehicles;
+    houses = save.houses || houses;
     upgrades = save.upgrades || upgrades;
 }
 
