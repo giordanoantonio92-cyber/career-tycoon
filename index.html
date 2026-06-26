@@ -17,6 +17,7 @@ body {
     color:white;
     min-height: 100vh;
     padding: 10px;
+    padding-bottom: 120px;
     position: relative;
     overflow-x: hidden;
 }
@@ -51,6 +52,8 @@ body::after {
 .overlay {
     position: relative;
     z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .header {
@@ -67,7 +70,7 @@ body::after {
 
 .avatar-section {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 120px 1fr;
     gap: 15px;
     align-items: center;
     background: rgba(0,0,0,0.7);
@@ -80,7 +83,7 @@ body::after {
 }
 
 .avatar-display {
-    font-size: 130px;
+    font-size: 100px;
     text-align: center;
     animation: bounce 2s infinite;
     text-shadow: 0 4px 8px rgba(0,0,0,0.9);
@@ -99,7 +102,7 @@ body::after {
 }
 
 .rank-info {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #ffd700;
     text-shadow: 0 2px 4px rgba(0,0,0,0.9);
@@ -107,7 +110,7 @@ body::after {
 
 .rank-progress {
     background: rgba(0,0,0,0.7);
-    height: 18px;
+    height: 16px;
     border-radius: 10px;
     overflow: hidden;
     border: 2px solid rgba(255,215,0,0.4);
@@ -121,17 +124,17 @@ body::after {
 }
 
 .rank-progress-text {
-    font-size: 10px;
+    font-size: 9px;
     color: #aaa;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 .promotion-btn {
     background: linear-gradient(135deg, #ff6b6b, #ff0000) !important;
-    padding: 10px !important;
-    font-size: 12px !important;
+    padding: 8px !important;
+    font-size: 11px !important;
     animation: pulse 1.5s infinite;
-    margin-top: 8px !important;
+    margin-top: 6px !important;
 }
 
 @keyframes pulse {
@@ -150,29 +153,42 @@ body::after {
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(10px);
     border-radius:10px;
-    padding:10px;
+    padding:8px;
     border:2px solid rgba(255,215,0,0.3);
     text-align: center;
 }
 
 .stat-value {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #ffd700;
 }
 
 .stat-label {
-    font-size: 10px;
+    font-size: 9px;
     color: #ccc;
-    margin-top: 3px;
+    margin-top: 2px;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .container { 
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
-    max-width: 600px;
-    margin: 0 auto 20px;
+    margin-bottom: 12px;
 }
 
 .card {
@@ -186,14 +202,14 @@ body::after {
 
 button {
     width:100%;
-    padding:14px;
+    padding:12px;
     margin-top:8px;
     border:none;
     border-radius:10px;
     font-weight:bold;
     cursor: pointer;
     transition: all 0.2s;
-    font-size: 15px;
+    font-size: 14px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
@@ -248,9 +264,15 @@ button:disabled {
     gap: 10px;
 }
 
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
 .item {
     background: rgba(0,0,0,0.4);
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     border: 2px solid rgba(255,215,0,0.2);
     text-align: center;
@@ -263,8 +285,8 @@ button:disabled {
 }
 
 .item-icon {
-    font-size: 32px;
-    margin-bottom: 5px;
+    font-size: 36px;
+    margin-bottom: 6px;
 }
 
 .item-name {
@@ -282,58 +304,38 @@ button:disabled {
 .item-count {
     font-size: 10px;
     color: #ffd700;
-    margin-top: 3px;
+    margin-top: 4px;
 }
 
 .item button {
-    margin-top: 5px;
-    padding: 6px !important;
+    margin-top: 6px;
+    padding: 8px !important;
     font-size: 11px !important;
 }
 
-.prison-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    font-size: 12px;
-}
-
-.prison-stat {
-    background: rgba(0,0,0,0.4);
-    padding: 10px;
-    border-radius: 8px;
-    border-left: 3px solid #ffd700;
-}
-
-.prison-stat-label {
-    color: #aaa;
-    margin-bottom: 3px;
-}
-
-.prison-stat-value {
-    font-size: 14px;
-    font-weight: bold;
-    color: #ffd700;
+.big-button {
+    font-size: 18px;
+    padding: 16px !important;
 }
 
 .mood-indicator {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: rgba(0,0,0,0.4);
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
 .mood-icon {
-    font-size: 28px;
+    font-size: 32px;
 }
 
 .mood-bar {
     flex: 1;
     background: rgba(0,0,0,0.5);
-    height: 20px;
+    height: 22px;
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid rgba(255,215,0,0.3);
@@ -354,55 +356,76 @@ button:disabled {
     background: linear-gradient(90deg, #f59e0b, #d97706);
 }
 
-.property-list {
+.prison-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
 }
 
-.property-item {
+.prison-stat {
     background: rgba(0,0,0,0.4);
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid rgba(255,215,0,0.2);
-    text-align: center;
+    border-left: 3px solid #ffd700;
 }
 
-.property-item:hover {
-    border-color: rgba(255,215,0,0.6);
-    background: rgba(0,0,0,0.6);
+.prison-stat-label {
+    color: #aaa;
+    margin-bottom: 3px;
 }
 
-.property-icon {
-    font-size: 40px;
-    margin-bottom: 5px;
-}
-
-.property-name {
-    font-size: 12px;
+.prison-stat-value {
+    font-size: 14px;
     font-weight: bold;
     color: #ffd700;
 }
 
-.property-rent {
-    font-size: 10px;
-    color: #22c55e;
-    margin: 3px 0;
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    border-top: 3px solid rgba(255,215,0,0.5);
+    padding: 8px;
+    z-index: 999;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
-.property-owned {
-    font-size: 10px;
-    color: #ffd700;
+.nav-btn {
+    padding: 10px !important;
+    font-size: 12px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 0 !important;
 }
 
-.property-item button {
-    padding: 6px !important;
-    font-size: 11px !important;
+.nav-btn-icon {
+    font-size: 18px;
 }
 
-.big-button {
-    font-size: 20px;
-    padding: 20px !important;
+.nav-btn-text {
+    font-size: 9px;
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+    color: #000 !important;
+}
+
+.nav-btn.active .nav-btn-text {
+    font-weight: bold;
 }
 
 .event-modal {
@@ -535,6 +558,18 @@ button:disabled {
     font-size: 16px !important;
     padding: 15px !important;
 }
+
+.cash-display {
+    background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(255,215,0,0.2));
+    border: 2px solid rgba(34,197,94,0.5);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #22c55e;
+}
 </style>
 </head>
 
@@ -550,175 +585,340 @@ button:disabled {
     <div class="avatar-info">
         <div class="rank-info">
             <span id="rankName">Trainee</span>
-            <div class="rank-progress-text">Rank <span id="rankNumber">1</span>/8 | Wage: $<span id="wage">1</span>/shift</div>
+            <div class="rank-progress-text">Rank <span id="rankNumber">1</span>/8</div>
         </div>
         <div class="rank-progress">
             <div class="rank-progress-bar" id="rankProgressBar"></div>
         </div>
-        <div class="rank-progress-text">Progress: $<span id="rankProgress">0</span> / $<span id="rankNeeded">1000</span></div>
-        <button class="promotion-btn" id="promotionBtn" onclick="claimPromotion()" style="display:none;">🎉 CLAIM PROMOTION</button>
+        <div class="rank-progress-text">$<span id="rankProgress">0</span> / $<span id="rankNeeded">1000</span></div>
+        <button class="promotion-btn" id="promotionBtn" onclick="claimPromotion()" style="display:none;">🎉 CLAIM</button>
     </div>
 </div>
 
-<div class="stats-bar">
-    <div class="stat-card">
-        <div class="stat-value">$<span id="money">0</span></div>
-        <div class="stat-label">Cash</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-value">$<span id="income">1</span></div>
-        <div class="stat-label">Income/shift</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-value">$<span id="expenses">0</span></div>
-        <div class="stat-label">Payroll/sec</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-value"><span id="prestige">0</span>x</div>
-        <div class="stat-label">Prestige</div>
-    </div>
+<!-- Cash Display -->
+<div class="cash-display">
+    💰 $<span id="money">0</span>
 </div>
 
-<div class="container">
+<!-- PERSONAL TAB -->
+<div id="personal-tab" class="content-section active">
+    <div class="container">
+        <div class="card">
+            <div class="section-title">💼 PERSONAL</div>
+            <button class="big-button green" onclick="work()">💰 Work Shift ($<span id="shiftPay">1</span>)</button>
+            <button class="blue" onclick="daily()">🎁 Daily Bonus</button>
+        </div>
 
-<!-- Main Actions -->
-<div class="card">
-    <button class="big-button green" onclick="work()">💰 Work Shift ($<span id="shiftPay">1</span>)</button>
-    <button class="blue" onclick="daily()">🎁 Daily Bonus</button>
-</div>
+        <div class="card">
+            <div class="section-title">📊 STATS</div>
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-value">$<span id="income">1</span></div>
+                    <div class="stat-label">Income/shift</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$<span id="expenses">0</span></div>
+                    <div class="stat-label">Payroll/sec</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"><span id="prestige">0</span>x</div>
+                    <div class="stat-label">Prestige</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"><span id="grade">D</span></div>
+                    <div class="stat-label">Facility</div>
+                </div>
+            </div>
+        </div>
 
-<!-- Inmate Mood -->
-<div class="card">
-    <div class="section-title">😠 INMATE MOOD</div>
-    <div class="mood-indicator">
-        <div class="mood-icon" id="moodIcon">😐</div>
-        <div class="mood-bar">
-            <div class="mood-fill" id="moodFill" style="width: 60%"></div>
-        </div>
-        <div style="min-width: 50px; text-align: right;">
-            <div style="font-size: 12px; color: #ffd700; font-weight: bold;" id="moodLevel">Neutral</div>
-            <div style="font-size: 10px; color: #aaa;"><span id="moodPercent">60</span>%</div>
-        </div>
-    </div>
-</div>
-
-<!-- Prison Management -->
-<div class="card">
-    <div class="section-title">🔒 PRISON MANAGEMENT</div>
-    <div class="prison-stats">
-        <div class="prison-stat">
-            <div class="prison-stat-label">Inmates</div>
-            <div class="prison-stat-value"><span id="inmates">50</span> / <span id="inmateCapacity">100</span></div>
-        </div>
-        <div class="prison-stat">
-            <div class="prison-stat-label">Security Level</div>
-            <div class="prison-stat-value"><span id="security">50</span>%</div>
-        </div>
-        <div class="prison-stat">
-            <div class="prison-stat-label">Staff</div>
-            <div class="prison-stat-value"><span id="staff">5</span></div>
-        </div>
-        <div class="prison-stat">
-            <div class="prison-stat-label">Facility Grade</div>
-            <div class="prison-stat-value"><span id="grade">D</span></div>
-        </div>
-    </div>
-    <button class="gold" onclick="togglePrisonMgmt()" style="margin-top: 12px;">⚙️ Manage Prison</button>
-</div>
-
-<div class="card" id="prisonMgmt" style="display:none;">
-    <div class="section-title">👮 Staff Management</div>
-    <div class="grid-2">
-        <div class="item">
-            <div class="item-icon">🛡️</div>
-            <div class="item-name">Guard</div>
-            <div class="item-desc">+5% Security</div>
-            <div class="item-count">Cost: $50/sec</div>
-            <div class="item-count">Hired: <span id="count-guard">0</span></div>
-            <button class="gold" onclick="hireStaff('guard', 50)">Hire</button>
-        </div>
-        <div class="item">
-            <div class="item-icon">⚕️</div>
-            <div class="item-name">Doctor</div>
-            <div class="item-desc">+10% Morale</div>
-            <div class="item-count">Cost: $80/sec</div>
-            <div class="item-count">Hired: <span id="count-doctor">0</span></div>
-            <button class="blue" onclick="hireStaff('doctor', 80)">Hire</button>
-        </div>
-    </div>
-    <div style="margin-top: 12px; font-size: 11px; color: #aaa;">
-        Total Payroll: $<span id="payroll">0</span>/sec
-    </div>
-</div>
-
-<!-- Real Estate Properties -->
-<div class="card">
-    <div class="section-title">🏠 REAL ESTATE PORTFOLIO</div>
-    <div style="font-size: 11px; color: #aaa; margin-bottom: 10px;">
-        Passive Rent: +$<span id="rentIncome">0</span>/sec | Properties Owned: <span id="propertiesOwned">0</span>
-    </div>
-    <div class="property-list">
-        <div class="property-item">
-            <div class="property-icon">🏚️</div>
-            <div class="property-name">Studio</div>
-            <div class="property-rent">+$0.5/sec</div>
-            <div class="property-owned">Own: <span id="count-studio">0</span></div>
-            <button class="gold" onclick="buyProperty('studio', 100)">$100</button>
-        </div>
-        <div class="property-item">
-            <div class="property-icon">🏠</div>
-            <div class="property-name">Condo</div>
-            <div class="property-rent">+$1.5/sec</div>
-            <div class="property-owned">Own: <span id="count-condo">0</span></div>
-            <button class="gold" onclick="buyProperty('condo', 300)">$300</button>
-        </div>
-        <div class="property-item">
-            <div class="property-icon">🏡</div>
-            <div class="property-name">Duplex</div>
-            <div class="property-rent">+$4/sec</div>
-            <div class="property-owned">Own: <span id="count-duplex">0</span></div>
-            <button class="purple" onclick="buyProperty('duplex', 800)">$800</button>
-        </div>
-        <div class="property-item">
-            <div class="property-icon">🏰</div>
-            <div class="property-name">Estate</div>
-            <div class="property-rent">+$12/sec</div>
-            <div class="property-owned">Own: <span id="count-estate">0</span></div>
-            <button class="blue" onclick="buyProperty('estate', 2500)">$2.5K</button>
+        <div class="card">
+            <div class="section-title">⭐ PRESTIGE SYSTEM</div>
+            <button class="purple" onclick="prestigeReset()">✨ Prestige Reset</button>
+            <button class="red" onclick="hardReset()" style="margin-top: 8px;">🔄 Hard Reset</button>
         </div>
     </div>
 </div>
 
-<!-- Inmate Amenities -->
-<div class="card">
-    <div class="section-title">🍽️ INMATE AMENITIES (Improve Mood)</div>
-    <div class="grid-2">
-        <div class="item">
-            <div class="item-icon">🍽️</div>
-            <div class="item-name">Better Food</div>
-            <div class="item-desc">+20% Mood</div>
-            <div class="item-count">Own: <span id="count-food">0</span></div>
-            <button class="gold" onclick="buyAmenity('food', 100)">$100</button>
+<!-- INMATES TAB -->
+<div id="inmates-tab" class="content-section">
+    <div class="container">
+        <div class="card">
+            <div class="section-title">😠 INMATE MOOD</div>
+            <div class="mood-indicator">
+                <div class="mood-icon" id="moodIcon">😐</div>
+                <div class="mood-bar">
+                    <div class="mood-fill" id="moodFill" style="width: 60%"></div>
+                </div>
+                <div style="min-width: 50px; text-align: right;">
+                    <div style="font-size: 12px; color: #ffd700; font-weight: bold;" id="moodLevel">Neutral</div>
+                    <div style="font-size: 10px; color: #aaa;"><span id="moodPercent">60</span>%</div>
+                </div>
+            </div>
         </div>
-        <div class="item">
-            <div class="item-icon">📺</div>
-            <div class="item-name">Recreation</div>
-            <div class="item-desc">+25% Mood</div>
-            <div class="item-count">Own: <span id="count-recreation">0</span></div>
-            <button class="gold" onclick="buyAmenity('recreation', 150)">$150</button>
+
+        <div class="card">
+            <div class="section-title">🍽️ INMATE AMENITIES</div>
+            <div class="grid-2">
+                <div class="item">
+                    <div class="item-icon">🍽️</div>
+                    <div class="item-name">Better Food</div>
+                    <div class="item-desc">+20% Mood</div>
+                    <div class="item-count">Own: <span id="count-food">0</span></div>
+                    <button class="gold" onclick="buyAmenity('food', 100)">$100</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">📺</div>
+                    <div class="item-name">Recreation</div>
+                    <div class="item-desc">+25% Mood</div>
+                    <div class="item-count">Own: <span id="count-recreation">0</span></div>
+                    <button class="gold" onclick="buyAmenity('recreation', 150)">$150</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">👥 INMATE STATS</div>
+            <div class="prison-stats">
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Current Population</div>
+                    <div class="prison-stat-value"><span id="inmates">50</span> / <span id="inmateCapacity">100</span></div>
+                </div>
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Mood Impact</div>
+                    <div class="prison-stat-value" id="moodImpact">+2%/amenity</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Prestige & Reset -->
-<div class="card">
-    <div class="section-title">⭐ PRESTIGE SYSTEM</div>
-    <button class="purple" onclick="prestigeReset()">✨ Prestige Reset</button>
-    <button class="red" onclick="hardReset()" style="margin-top: 8px;">🔄 Hard Reset</button>
+<!-- PRISON TAB -->
+<div id="prison-tab" class="content-section">
+    <div class="container">
+        <div class="card">
+            <div class="section-title">🔒 PRISON STATUS</div>
+            <div class="prison-stats">
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Security Level</div>
+                    <div class="prison-stat-value"><span id="security">50</span>%</div>
+                </div>
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Total Staff</div>
+                    <div class="prison-stat-value"><span id="staff">5</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">👮 STAFF MANAGEMENT</div>
+            <div class="grid-2">
+                <div class="item">
+                    <div class="item-icon">🛡️</div>
+                    <div class="item-name">Guard</div>
+                    <div class="item-desc">+5% Security</div>
+                    <div class="item-count">Cost: $50/sec</div>
+                    <div class="item-count">Hired: <span id="count-guard">0</span></div>
+                    <button class="gold" onclick="hireStaff('guard', 50)">Hire</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">⚕️</div>
+                    <div class="item-name">Doctor</div>
+                    <div class="item-desc">+Morale</div>
+                    <div class="item-count">Cost: $80/sec</div>
+                    <div class="item-count">Hired: <span id="count-doctor">0</span></div>
+                    <button class="blue" onclick="hireStaff('doctor', 80)">Hire</button>
+                </div>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: #aaa; text-align: center;">
+                Total Payroll: $<span id="payroll">0</span>/sec
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WORK TAB -->
+<div id="work-tab" class="content-section">
+    <div class="container">
+        <div class="card">
+            <div class="section-title">💰 WORK</div>
+            <button class="big-button green" onclick="work()">Work Shift: +$<span id="workPay">1</span></button>
+            <div style="font-size: 12px; color: #aaa; margin-top: 10px; text-align: center;">
+                Base Wage: $<span id="wage">1</span> + Rent Income
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">🎯 INCOME BREAKDOWN</div>
+            <div class="prison-stats">
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Base Wage</div>
+                    <div class="prison-stat-value">$<span id="baseWage">1</span></div>
+                </div>
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Rent Income</div>
+                    <div class="prison-stat-value">$<span id="rentDisplay">0</span></div>
+                </div>
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Prestige Boost</div>
+                    <div class="prison-stat-value"><span id="prestigeBoost">1</span>x</div>
+                </div>
+                <div class="prison-stat">
+                    <div class="prison-stat-label">Total Earned</div>
+                    <div class="prison-stat-value">$<span id="totalEarned">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">📈 RANK PROGRESS</div>
+            <div style="font-size: 13px; color: #ffd700; font-weight: bold; margin-bottom: 8px;">
+                <span id="rankProgressTitle">Trainee</span>
+            </div>
+            <div class="rank-progress">
+                <div class="rank-progress-bar" id="rankProgressBar2"></div>
+            </div>
+            <div class="rank-progress-text" style="text-align: center; margin-top: 8px;">
+                Progress: $<span id="rankProgressWork">0</span> / $<span id="rankNeededWork">1000</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SHOPPING TAB -->
+<div id="shopping-tab" class="content-section">
+    <div class="container">
+        <div class="card">
+            <div class="section-title">🏠 REAL ESTATE</div>
+            <div style="font-size: 11px; color: #aaa; margin-bottom: 10px;">
+                Passive Rent: +$<span id="rentIncome">0</span>/sec | Properties: <span id="propertiesOwned">0</span>
+            </div>
+            <div class="grid-2">
+                <div class="item">
+                    <div class="item-icon">🏚️</div>
+                    <div class="item-name">Studio</div>
+                    <div class="item-desc">+$0.5/sec</div>
+                    <div class="item-count">Own: <span id="count-studio">0</span></div>
+                    <button class="gold" onclick="buyProperty('studio', 100)">$100</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">🏠</div>
+                    <div class="item-name">Condo</div>
+                    <div class="item-desc">+$1.5/sec</div>
+                    <div class="item-count">Own: <span id="count-condo">0</span></div>
+                    <button class="gold" onclick="buyProperty('condo', 300)">$300</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">🏡</div>
+                    <div class="item-name">Duplex</div>
+                    <div class="item-desc">+$4/sec</div>
+                    <div class="item-count">Own: <span id="count-duplex">0</span></div>
+                    <button class="purple" onclick="buyProperty('duplex', 800)">$800</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">🏰</div>
+                    <div class="item-name">Estate</div>
+                    <div class="item-desc">+$12/sec</div>
+                    <div class="item-count">Own: <span id="count-estate">0</span></div>
+                    <button class="blue" onclick="buyProperty('estate', 2500)">$2.5K</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">🚗 VEHICLES</div>
+            <div class="grid-2">
+                <div class="item">
+                    <div class="item-icon">🏎️</div>
+                    <div class="item-name">Sports Car</div>
+                    <div class="item-desc">Luxury</div>
+                    <div class="item-count">Own: <span id="count-sportscar">0</span></div>
+                    <button class="gold" onclick="buyItem('sportscar', 5000)">$5K</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">🚙</div>
+                    <div class="item-name">SUV</div>
+                    <div class="item-desc">Premium</div>
+                    <div class="item-count">Own: <span id="count-suv">0</span></div>
+                    <button class="purple" onclick="buyItem('suv', 8000)">$8K</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">✈️</div>
+                    <div class="item-name">Private Jet</div>
+                    <div class="item-desc">Ultra Luxury</div>
+                    <div class="item-count">Own: <span id="count-jet">0</span></div>
+                    <button class="blue" onclick="buyItem('jet', 50000)">$50K</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">🛥️</div>
+                    <div class="item-name">Yacht</div>
+                    <div class="item-desc">Elite</div>
+                    <div class="item-count">Own: <span id="count-yacht">0</span></div>
+                    <button class="red" onclick="buyItem('yacht', 75000)">$75K</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">💎 COLLECTIBLES</div>
+            <div class="grid-2">
+                <div class="item">
+                    <div class="item-icon">👑</div>
+                    <div class="item-name">Gold Crown</div>
+                    <div class="item-count">Own: <span id="count-crown">0</span></div>
+                    <button class="gold" onclick="buyItem('crown', 10000)">$10K</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">💍</div>
+                    <div class="item-name">Diamond Ring</div>
+                    <div class="item-count">Own: <span id="count-ring">0</span></div>
+                    <button class="purple" onclick="buyItem('ring', 20000)">$20K</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">🎨</div>
+                    <div class="item-name">Painting</div>
+                    <div class="item-count">Own: <span id="count-painting">0</span></div>
+                    <button class="blue" onclick="buyItem('painting', 30000)">$30K</button>
+                </div>
+                <div class="item">
+                    <div class="item-icon">🏆</div>
+                    <div class="item-name">Trophy</div>
+                    <div class="item-count">Own: <span id="count-trophy">0</span></div>
+                    <button class="blue" onclick="buyItem('trophy', 40000)">$40K</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </div>
 
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <button class="nav-btn active" onclick="switchTab('personal')">
+        <div class="nav-btn-icon">👤</div>
+        <div class="nav-btn-text">Personal</div>
+    </button>
+    <button class="nav-btn" onclick="switchTab('inmates')">
+        <div class="nav-btn-icon">😠</div>
+        <div class="nav-btn-text">Inmates</div>
+    </button>
+    <button class="nav-btn" onclick="switchTab('prison')">
+        <div class="nav-btn-icon">🔒</div>
+        <div class="nav-btn-text">Prison</div>
+    </button>
+    <button class="nav-btn" onclick="switchTab('work')">
+        <div class="nav-btn-icon">💼</div>
+        <div class="nav-btn-text">Work</div>
+    </button>
+    <button class="nav-btn" onclick="switchTab('shopping')">
+        <div class="nav-btn-icon">🛍️</div>
+        <div class="nav-btn-text">Shopping</div>
+    </button>
+</div>
+
+<!-- Event Modal -->
+<div class="event-modal" id="eventModal">
+    <div class="event-box" id="eventBox"></div>
 </div>
 
 <!-- Promotion Modal -->
@@ -736,11 +936,6 @@ button:disabled {
     </div>
 </div>
 
-<!-- Event Modal -->
-<div class="event-modal" id="eventModal">
-    <div class="event-box" id="eventBox"></div>
-</div>
-
 <script>
 
 let money = 0;
@@ -755,7 +950,6 @@ let inmates = 50;
 let inmateCapacity = 100;
 let security = 50;
 let mood = 60;
-let eventCooldown = 0;
 
 const ranks = [
     { name: "Corrections Officer Trainee", wage: 1, threshold: 1000 },
@@ -778,14 +972,33 @@ const properties = {
 };
 
 const staff = {
-    guard: { cost: 50, count: 0, securityBoost: 5 },
-    doctor: { cost: 80, count: 0, moraleBoost: 10 }
+    guard: { cost: 50, count: 0 },
+    doctor: { cost: 80, count: 0 }
 };
 
 const amenities = {
     food: { cost: 100, count: 0, moodBoost: 20 },
     recreation: { cost: 150, count: 0, moodBoost: 25 }
 };
+
+const items = {
+    sportscar: { cost: 5000, count: 0 },
+    suv: { cost: 8000, count: 0 },
+    jet: { cost: 50000, count: 0 },
+    yacht: { cost: 75000, count: 0 },
+    crown: { cost: 10000, count: 0 },
+    ring: { cost: 20000, count: 0 },
+    painting: { cost: 30000, count: 0 },
+    trophy: { cost: 40000, count: 0 }
+};
+
+function switchTab(tab) {
+    document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+    document.getElementById(tab + '-tab').classList.add('active');
+    
+    document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+    event.target.closest('.nav-btn').classList.add('active');
+}
 
 function getMoodState() {
     if(mood >= 75) return { level: "Happy", icon: "😊", color: "green" };
@@ -823,9 +1036,9 @@ function updateRank() {
 }
 
 function updateMood() {
-    let moodChange = Object.values(amenities).reduce((sum, a) => sum + (a.count * a.moodBoost), 0);
-    if(mood < 100) mood = Math.min(100, mood + moodChange * 0.01);
-    if(mood > 0) mood = Math.max(0, mood - 0.1);
+    let moodChange = Object.values(amenities).reduce((sum, a) => sum + (a.count * a.moodBoost * 0.01), 0);
+    if(mood < 100) mood = Math.min(100, mood + moodChange);
+    if(mood > 0) mood = Math.max(0, mood - 0.02);
     
     const moodState = getMoodState();
     document.getElementById("moodIcon").innerText = moodState.icon;
@@ -834,18 +1047,7 @@ function updateMood() {
     document.getElementById("moodFill").className = "mood-fill " + (moodState.color === "green" ? "" : moodState.color);
     document.getElementById("moodFill").style.width = mood + "%";
     
-    if(mood < 25 && Math.random() < 0.03) triggerEvent();
-}
-
-function updateStats() {
-    security = Math.min(100, 50 + (staff.guard.count * 5));
-    document.getElementById("inmates").innerText = inmates;
-    document.getElementById("inmateCapacity").innerText = inmateCapacity;
-    document.getElementById("security").innerText = Math.floor(security);
-    document.getElementById("staff").innerText = staff.guard.count + staff.doctor.count;
-    
-    const grade = security > 80 ? "A" : security > 60 ? "B" : security > 40 ? "C" : "D";
-    document.getElementById("grade").innerText = grade;
+    if(mood < 25 && Math.random() < 0.02) triggerEvent();
 }
 
 function update() {
@@ -856,6 +1058,10 @@ function update() {
     document.getElementById("prestige").innerText = prestige;
     document.getElementById("shiftPay").innerText = ranks[currentRank].wage;
     document.getElementById("wage").innerText = ranks[currentRank].wage;
+    document.getElementById("workPay").innerText = calculateIncome().toFixed(1);
+    document.getElementById("baseWage").innerText = ranks[currentRank].wage;
+    document.getElementById("totalEarned").innerText = formatNumber(Math.floor(totalEarned));
+    document.getElementById("prestigeBoost").innerText = (1 + prestige * 0.5);
     
     updateRank();
     document.getElementById("avatar").innerText = avatars[currentRank];
@@ -871,7 +1077,12 @@ function update() {
     document.getElementById("rankProgress").innerText = formatNumber(Math.max(0, Math.floor(progress)));
     document.getElementById("rankNeeded").innerText = formatNumber(Math.floor(needed));
     document.getElementById("rankProgressBar").style.width = progressPercent + "%";
+    document.getElementById("rankProgressBar2").style.width = progressPercent + "%";
+    document.getElementById("rankProgressWork").innerText = formatNumber(Math.max(0, Math.floor(progress)));
+    document.getElementById("rankNeededWork").innerText = formatNumber(Math.floor(needed));
+    document.getElementById("rankProgressTitle").innerText = ranks[currentRank].name;
     
+    // Update property counts
     Object.keys(properties).forEach(key => {
         const el = document.getElementById(`count-${key}`);
         if(el) el.innerText = properties[key].count;
@@ -879,8 +1090,10 @@ function update() {
     
     let rentIncome = Object.values(properties).reduce((sum, p) => sum + (p.count * p.rent), 0);
     document.getElementById("rentIncome").innerText = rentIncome.toFixed(1);
+    document.getElementById("rentDisplay").innerText = rentIncome.toFixed(1);
     document.getElementById("propertiesOwned").innerText = Object.values(properties).reduce((sum, p) => sum + p.count, 0);
     
+    // Update staff counts
     Object.keys(staff).forEach(key => {
         const el = document.getElementById(`count-${key}`);
         if(el) el.innerText = staff[key].count;
@@ -888,15 +1101,31 @@ function update() {
     
     document.getElementById("payroll").innerText = calculateExpenses().toFixed(1);
     
+    // Update amenity counts
     Object.keys(amenities).forEach(key => {
         const el = document.getElementById(`count-${key}`);
         if(el) el.innerText = amenities[key].count;
     });
     
-    updateStats();
+    // Update item counts
+    Object.keys(items).forEach(key => {
+        const el = document.getElementById(`count-${key}`);
+        if(el) el.innerText = items[key].count;
+    });
+    
+    // Update stats
+    security = Math.min(100, 50 + (staff.guard.count * 5));
+    document.getElementById("inmates").innerText = inmates;
+    document.getElementById("inmateCapacity").innerText = inmateCapacity;
+    document.getElementById("security").innerText = Math.floor(security);
+    document.getElementById("staff").innerText = staff.guard.count + staff.doctor.count;
+    
+    const grade = security > 80 ? "A" : security > 60 ? "B" : security > 40 ? "C" : "D";
+    document.getElementById("grade").innerText = grade;
+    
     updateMood();
     
-    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, currentRank, properties, staff, amenities, inmates, security, mood}));
+    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, currentRank, properties, staff, amenities, items, inmates, security, mood}));
 }
 
 function work() {
@@ -950,15 +1179,6 @@ function triggerEvent() {
             choices: [
                 { text: "🚒 Emergency Response ($100)", cost: 100, effect: () => { mood -= 5; } },
                 { text: "⚠️ Full Evacuation ($200)", cost: 200, effect: () => { mood += 5; security += 10; } }
-            ]
-        },
-        {
-            icon: "🚨",
-            title: "ESCAPE ATTEMPT!",
-            desc: "Inmates trying to escape!",
-            choices: [
-                { text: "🔫 Lockdown ($75)", cost: 75, effect: () => { security += 15; mood -= 10; } },
-                { text: "🛑 Block ($150)", cost: 150, effect: () => { security += 25; } }
             ]
         }
     ];
@@ -1029,6 +1249,17 @@ function buyAmenity(type, cost) {
     }
 }
 
+function buyItem(type, cost) {
+    if(money >= cost) {
+        money -= cost;
+        items[type].count++;
+        float(`+1 ${type}`);
+        update();
+    } else {
+        float("Not enough money!");
+    }
+}
+
 function daily() {
     let today = new Date().toDateString();
     let last = localStorage.getItem("lastDaily");
@@ -1066,15 +1297,11 @@ function hardReset() {
         Object.keys(properties).forEach(k => properties[k].count = 0);
         Object.keys(staff).forEach(k => staff[k].count = 0);
         Object.keys(amenities).forEach(k => amenities[k].count = 0);
+        Object.keys(items).forEach(k => items[k].count = 0);
         localStorage.removeItem("save");
         localStorage.removeItem("lastDaily");
         update();
     }
-}
-
-function togglePrisonMgmt() {
-    const el = document.getElementById("prisonMgmt");
-    el.style.display = el.style.display === "none" ? "block" : "none";
 }
 
 function float(text) {
@@ -1102,15 +1329,15 @@ setInterval(() => {
     document.getElementById("money").innerText = formatNumber(Math.floor(money));
 }, 100);
 
+// Update mood
+setInterval(() => {
+    updateMood();
+}, 1000);
+
 // Random events
 setInterval(() => {
     if(Math.random() < 0.01 && mood < 40) triggerEvent();
 }, 10000);
-
-// Update mood and stats
-setInterval(() => {
-    updateMood();
-}, 1000);
 
 // Load
 let save = JSON.parse(localStorage.getItem("save"));
@@ -1122,6 +1349,7 @@ if(save) {
     properties = save.properties || properties;
     staff = save.staff || staff;
     amenities = save.amenities || amenities;
+    items = save.items || items;
     inmates = save.inmates || 50;
     security = save.security || 50;
     mood = save.mood || 60;
