@@ -41,52 +41,60 @@ body::before {
 
 .header {
     text-align:center;
-    padding:20px;
-    font-size:32px;
+    padding:15px;
+    font-size:28px;
     font-weight:bold;
     background: rgba(0,0,0,0.6);
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     border: 3px solid rgba(255,215,0,0.3);
 }
 
 .avatar-section {
-    text-align: center;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 15px;
+    align-items: center;
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
     border-radius:15px;
-    padding:20px;
+    padding:15px;
     border:3px solid rgba(255,215,0,0.4);
     box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .avatar-display {
-    font-size: 120px;
-    margin: 10px 0;
+    font-size: 100px;
+    text-align: center;
     animation: bounce 2s infinite;
     text-shadow: 0 4px 8px rgba(0,0,0,0.7);
+    line-height: 1;
 }
 
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-10px); }
+}
+
+.avatar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .rank-info {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #ffd700;
-    margin: 10px 0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.7);
 }
 
 .rank-progress {
     background: rgba(0,0,0,0.7);
-    height: 20px;
+    height: 18px;
     border-radius: 10px;
-    margin: 10px 0;
     overflow: hidden;
     border: 2px solid rgba(255,215,0,0.3);
 }
@@ -98,61 +106,67 @@ body::before {
     transition: width 0.5s ease;
 }
 
+.rank-progress-text {
+    font-size: 10px;
+    color: #aaa;
+    margin-top: 3px;
+}
+
 .stats-bar {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
 }
 
 .stat-card {
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
-    border-radius:12px;
-    padding:15px;
+    border-radius:10px;
+    padding:12px;
     border:2px solid rgba(255,215,0,0.3);
     text-align: center;
 }
 
 .stat-value {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     color: #ffd700;
 }
 
 .stat-label {
-    font-size: 12px;
+    font-size: 11px;
     color: #ccc;
-    margin-top: 5px;
+    margin-top: 3px;
 }
 
 .container { 
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 12px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
 
 .card {
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
-    border-radius:15px;
-    padding:20px;
+    border-radius:12px;
+    padding:15px;
     border:2px solid rgba(255,215,0,0.3);
     box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 }
 
 button {
     width:100%;
-    padding:16px;
-    margin-top:10px;
+    padding:14px;
+    margin-top:8px;
     border:none;
     border-radius:10px;
     font-weight:bold;
     cursor: pointer;
     transition: all 0.2s;
-    font-size: 16px;
+    font-size: 15px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
@@ -183,7 +197,7 @@ button:disabled {
     color:#ffd700;
     font-weight:bold;
     pointer-events: none;
-    font-size: 20px;
+    font-size: 18px;
     z-index: 1000;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
@@ -193,92 +207,70 @@ button:disabled {
     100% { transform: translateY(-80px) scale(1.2); opacity:0; }
 }
 
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #ffd700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 
-.upgrade-item {
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.item {
     background: rgba(0,0,0,0.3);
     padding: 10px;
     border-radius: 8px;
-    text-align: center;
-    font-size: 12px;
-    border: 1px solid rgba(255,215,0,0.2);
-}
-
-.upgrade-item button {
-    margin-top: 5px;
-    padding: 8px !important;
-    font-size: 11px !important;
-}
-
-.section-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #ffd700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.vehicle-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.vehicle-item {
-    background: rgba(0,0,0,0.3);
-    padding: 12px;
-    border-radius: 8px;
     border: 2px solid rgba(255,215,0,0.2);
+    text-align: center;
     transition: all 0.2s;
 }
 
-.vehicle-item:hover {
+.item:hover {
     border-color: rgba(255,215,0,0.6);
     background: rgba(0,0,0,0.5);
 }
 
-.vehicle-icon {
+.item-icon {
     font-size: 32px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
-.vehicle-name {
-    font-size: 14px;
+.item-name {
+    font-size: 12px;
     font-weight: bold;
     color: #ffd700;
 }
 
-.vehicle-income {
-    font-size: 11px;
+.item-desc {
+    font-size: 10px;
     color: #aaa;
-    margin: 5px 0;
+    margin: 4px 0;
 }
 
-.vehicle-item button {
-    margin-top: 8px;
-    padding: 8px !important;
-    font-size: 12px !important;
+.item-count {
+    font-size: 10px;
+    color: #ffd700;
+    margin-top: 3px;
 }
 
-.big-button {
-    font-size: 24px;
-    padding: 28px !important;
-    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+.item button {
+    margin-top: 5px;
+    padding: 6px !important;
+    font-size: 11px !important;
 }
 
-.stats-text {
-    font-size: 12px;
-    color: #aaa;
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-/* Garage Modal */
-.garage-modal {
+.event-modal {
     display: none;
     position: fixed;
     top: 0;
@@ -289,106 +281,127 @@ button:disabled {
     z-index: 3000;
     padding: 20px;
     overflow-y: auto;
-}
-
-.garage-modal.active {
-    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.garage-header {
+.event-modal.active {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+}
+
+.event-box {
+    background: rgba(255,0,0,0.2);
+    border: 3px solid #ff4444;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.event-icon {
+    font-size: 80px;
     margin-bottom: 20px;
 }
 
-.garage-title {
-    font-size: 32px;
+.event-title {
+    font-size: 24px;
     font-weight: bold;
-    color: #ffd700;
-}
-
-.garage-close {
-    font-size: 32px;
-    cursor: pointer;
-    color: #ffd700;
-    transition: all 0.2s;
-}
-
-.garage-close:hover {
-    transform: scale(1.2);
-}
-
-.garage-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    flex: 1;
-}
-
-.garage-item {
-    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05));
-    border: 3px solid rgba(255,215,0,0.4);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s;
-}
-
-.garage-item:hover {
-    transform: scale(1.05);
-    border-color: rgba(255,215,0,0.8);
-    background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.1));
-}
-
-.garage-icon {
-    font-size: 80px;
+    color: #ff4444;
     margin-bottom: 15px;
-    animation: float-item 3s ease-in-out infinite;
 }
 
-@keyframes float-item {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.event-description {
+    font-size: 14px;
+    color: #ddd;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-.garage-name {
-    font-size: 18px;
+.event-choices {
+    display: grid;
+    gap: 10px;
+}
+
+.event-btn {
+    padding: 12px !important;
+    font-size: 13px !important;
+}
+
+.prison-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.prison-stat {
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #ffd700;
+}
+
+.prison-stat-label {
+    color: #aaa;
+    margin-bottom: 3px;
+}
+
+.prison-stat-value {
+    font-size: 14px;
     font-weight: bold;
     color: #ffd700;
-    margin-bottom: 10px;
 }
 
-.garage-description {
-    font-size: 12px;
-    color: #aaa;
-    line-height: 1.5;
+.property-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
-.garage-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    margin-top: 15px;
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    color: white;
-    border: none;
+.property-item {
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
     border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.2s;
-}
-
-.garage-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-}
-
-.empty-garage {
-    grid-column: 1 / -1;
+    border: 2px solid rgba(255,215,0,0.2);
     text-align: center;
-    padding: 40px;
-    color: #999;
+}
+
+.property-item:hover {
+    border-color: rgba(255,215,0,0.6);
+    background: rgba(0,0,0,0.5);
+}
+
+.property-icon {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.property-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.property-rent {
+    font-size: 10px;
+    color: #22c55e;
+    margin: 3px 0;
+}
+
+.property-owned {
+    font-size: 10px;
+    color: #ffd700;
+}
+
+.property-item button {
+    padding: 6px !important;
+    font-size: 11px !important;
+}
+
+.big-button {
+    font-size: 20px;
+    padding: 20px !important;
 }
 </style>
 </head>
@@ -401,239 +414,226 @@ button:disabled {
 
 <!-- Avatar Section -->
 <div class="avatar-section">
-    <div style="font-size: 14px; color: #aaa;">Your Rank Progression</div>
     <div class="avatar-display" id="avatar">👮</div>
-    <div class="rank-info">Rank: <span id="rankName">Trainee</span></div>
-    <div class="rank-progress">
-        <div class="rank-progress-bar" id="rankProgressBar"></div>
+    <div class="avatar-info">
+        <div class="rank-info">
+            <span id="rankName">Trainee</span>
+            <div class="rank-progress-text">Rank <span id="rankNumber">1</span>/8</div>
+        </div>
+        <div class="rank-progress">
+            <div class="rank-progress-bar" id="rankProgressBar"></div>
+        </div>
+        <div class="rank-progress-text">Progress: $<span id="rankProgress">0</span> / $<span id="rankNeeded">1000</span></div>
     </div>
-    <div style="font-size: 11px; color: #aaa;">Progress: $<span id="rankProgress">0</span> / $<span id="rankNeeded">1000</span></div>
 </div>
 
 <div class="stats-bar">
     <div class="stat-card">
         <div class="stat-value">$<span id="money">0</span></div>
-        <div class="stat-label">Total Money</div>
+        <div class="stat-label">Cash</div>
     </div>
     <div class="stat-card">
         <div class="stat-value">$<span id="income">1</span></div>
         <div class="stat-label">Income/sec</div>
     </div>
+    <div class="stat-card">
+        <div class="stat-value">$<span id="expenses">0</span></div>
+        <div class="stat-label">Expenses/sec</div>
+    </div>
 </div>
 
 <div class="container">
 
-<!-- Main Action Card -->
+<!-- Main Actions -->
 <div class="card">
-    <button class="big-button green" onclick="work()">💰 Work</button>
-    <button class="blue" onclick="daily()">🎁 Daily Bonus: $<span id="dailyAmount">100</span></button>
-    <button class="purple" onclick="openGarage()">🚗 View Garage</button>
+    <button class="big-button green" onclick="work()">💰 Work Shift</button>
+    <button class="blue" onclick="daily()">🎁 Daily Bonus</button>
 </div>
 
-<!-- Vehicles Card -->
+<!-- Prison Management -->
 <div class="card">
-    <div class="section-title">🚗 Vehicles & Assets</div>
-    <div class="vehicle-grid">
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🚗</div>
-            <div class="vehicle-name">Car</div>
-            <div class="vehicle-income">+$0.5/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-car">0</span></div>
-            <button class="gold" onclick="buyVehicle('car', 50)">Buy $50</button>
+    <div class="section-title">🔒 PRISON MANAGEMENT</div>
+    <div class="prison-stats">
+        <div class="prison-stat">
+            <div class="prison-stat-label">Inmates</div>
+            <div class="prison-stat-value"><span id="inmates">50</span> / <span id="inmateCapacity">100</span></div>
         </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🏎️</div>
-            <div class="vehicle-name">Sports Car</div>
-            <div class="vehicle-income">+$2/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-sportsCar">0</span></div>
-            <button class="purple" onclick="buyVehicle('sportsCar', 200)">Buy $200</button>
+        <div class="prison-stat">
+            <div class="prison-stat-label">Security Level</div>
+            <div class="prison-stat-value"><span id="security">50</span>%</div>
         </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🚙</div>
-            <div class="vehicle-name">Truck</div>
-            <div class="vehicle-income">+$1/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-truck">0</span></div>
-            <button class="gold" onclick="buyVehicle('truck', 100)">Buy $100</button>
+        <div class="prison-stat">
+            <div class="prison-stat-label">Staff</div>
+            <div class="prison-stat-value"><span id="staff">5</span></div>
         </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">✈️</div>
-            <div class="vehicle-name">Jet</div>
-            <div class="vehicle-income">+$10/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-jet">0</span></div>
-            <button class="blue" onclick="buyVehicle('jet', 1000)">Buy $1K</button>
-        </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🚁</div>
-            <div class="vehicle-name">Helicopter</div>
-            <div class="vehicle-income">+$5/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-helicopter">0</span></div>
-            <button class="purple" onclick="buyVehicle('helicopter', 500)">Buy $500</button>
-        </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🚢</div>
-            <div class="vehicle-name">Yacht</div>
-            <div class="vehicle-income">+$8/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-yacht">0</span></div>
-            <button class="blue" onclick="buyVehicle('yacht', 800)">Buy $800</button>
+        <div class="prison-stat">
+            <div class="prison-stat-label">Morale</div>
+            <div class="prison-stat-value"><span id="morale">75</span>%</div>
         </div>
     </div>
+    <button class="gold" onclick="togglePrisonMgmt()" style="margin-top: 12px;">⚙️ Manage Prison</button>
 </div>
 
-<!-- Houses Card -->
-<div class="card">
-    <div class="section-title">🏠 Real Estate</div>
-    <div class="vehicle-grid">
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🏠</div>
-            <div class="vehicle-name">Apartment</div>
-            <div class="vehicle-income">+$1/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-apartment">0</span></div>
-            <button class="gold" onclick="buyHouse('apartment', 150)">Buy $150</button>
-        </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🏡</div>
-            <div class="vehicle-name">House</div>
-            <div class="vehicle-income">+$3/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-house">0</span></div>
-            <button class="gold" onclick="buyHouse('house', 400)">Buy $400</button>
-        </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🏰</div>
-            <div class="vehicle-name">Mansion</div>
-            <div class="vehicle-income">+$10/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-mansion">0</span></div>
-            <button class="purple" onclick="buyHouse('mansion', 1500)">Buy $1.5K</button>
-        </div>
-        <div class="vehicle-item">
-            <div class="vehicle-icon">🏢</div>
-            <div class="vehicle-name">Skyscraper</div>
-            <div class="vehicle-income">+$20/sec</div>
-            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-skyscraper">0</span></div>
-            <button class="blue" onclick="buyHouse('skyscraper', 5000)">Buy $5K</button>
-        </div>
-    </div>
-</div>
-
-<!-- Business Upgrades Card -->
-<div class="card">
-    <div class="section-title">🏢 Business Upgrades</div>
+<div class="card" id="prisonMgmt" style="display:none;">
+    <div class="section-title">👮 Staff Management</div>
     <div class="grid-2">
-        <div class="upgrade-item">
-            <div style="font-size: 20px; margin-bottom: 5px;">👷</div>
-            <div>Worker</div>
-            <div style="font-size: 10px; color: #aaa;">+$0.1/sec</div>
-            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-worker">0</span></div>
-            <button class="gold" onclick="buyUpgrade('worker', 10)">$10</button>
+        <div class="item">
+            <div class="item-icon">🛡️</div>
+            <div class="item-name">Guard</div>
+            <div class="item-desc">+5% Security</div>
+            <div class="item-count">Cost: $50/sec</div>
+            <div class="item-count">Hired: <span id="count-guard">0</span></div>
+            <button class="gold" onclick="hireStaff('guard', 50)">Hire</button>
         </div>
-        <div class="upgrade-item">
-            <div style="font-size: 20px; margin-bottom: 5px;">👔</div>
-            <div>Manager</div>
-            <div style="font-size: 10px; color: #aaa;">+$1/sec</div>
-            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-manager">0</span></div>
-            <button class="gold" onclick="buyUpgrade('manager', 100)">$100</button>
+        <div class="item">
+            <div class="item-icon">⚕️</div>
+            <div class="item-name">Doctor</div>
+            <div class="item-desc">+10% Morale</div>
+            <div class="item-count">Cost: $80/sec</div>
+            <div class="item-count">Hired: <span id="count-doctor">0</span></div>
+            <button class="blue" onclick="hireStaff('doctor', 80)">Hire</button>
         </div>
-        <div class="upgrade-item">
-            <div style="font-size: 20px; margin-bottom: 5px;">🏢</div>
-            <div>Company</div>
-            <div style="font-size: 10px; color: #aaa;">+$5/sec</div>
-            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-company">0</span></div>
-            <button class="gold" onclick="buyUpgrade('company', 500)">$500</button>
+    </div>
+    <div style="margin-top: 12px; font-size: 11px; color: #aaa;">
+        Total Payroll: $<span id="payroll">0</span>/sec
+    </div>
+</div>
+
+<!-- Real Estate Properties -->
+<div class="card">
+    <div class="section-title">🏠 REAL ESTATE PORTFOLIO</div>
+    <div style="font-size: 11px; color: #aaa; margin-bottom: 10px;">
+        Passive Rent: +$<span id="rentIncome">0</span>/sec | Properties Owned: <span id="propertiesOwned">0</span>
+    </div>
+    <div class="property-list">
+        <div class="property-item">
+            <div class="property-icon">🏚️</div>
+            <div class="property-name">Studio</div>
+            <div class="property-rent">+$0.5/sec</div>
+            <div class="property-owned">Own: <span id="count-studio">0</span></div>
+            <button class="gold" onclick="buyProperty('studio', 100)">$100</button>
         </div>
-        <div class="upgrade-item">
-            <div style="font-size: 20px; margin-bottom: 5px;">🌐</div>
-            <div>Corporation</div>
-            <div style="font-size: 10px; color: #aaa;">+$25/sec</div>
-            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-corporation">0</span></div>
-            <button class="blue" onclick="buyUpgrade('corporation', 2000)">$2K</button>
+        <div class="property-item">
+            <div class="property-icon">🏠</div>
+            <div class="property-name">Condo</div>
+            <div class="property-rent">+$1.5/sec</div>
+            <div class="property-owned">Own: <span id="count-condo">0</span></div>
+            <button class="gold" onclick="buyProperty('condo', 300)">$300</button>
+        </div>
+        <div class="property-item">
+            <div class="property-icon">🏡</div>
+            <div class="property-name">Duplex</div>
+            <div class="property-rent">+$4/sec</div>
+            <div class="property-owned">Own: <span id="count-duplex">0</span></div>
+            <button class="purple" onclick="buyProperty('duplex', 800)">$800</button>
+        </div>
+        <div class="property-item">
+            <div class="property-icon">🏰</div>
+            <div class="property-name">Estate</div>
+            <div class="property-rent">+$12/sec</div>
+            <div class="property-owned">Own: <span id="count-estate">0</span></div>
+            <button class="blue" onclick="buyProperty('estate', 2500)">$2.5K</button>
         </div>
     </div>
 </div>
 
-<!-- Prestige Card -->
+<!-- Upgrades -->
 <div class="card">
-    <div class="section-title">⭐ Prestige System</div>
+    <div class="section-title">⬆️ FACILITY UPGRADES</div>
+    <div class="grid-2">
+        <div class="item">
+            <div class="item-icon">📺</div>
+            <div class="item-name">Recreation</div>
+            <div class="item-desc">+10% Morale</div>
+            <div class="item-count">Own: <span id="count-recreation">0</span></div>
+            <button class="gold" onclick="buyUpgrade('recreation', 75)">$75</button>
+        </div>
+        <div class="item">
+            <div class="item-icon">🍽️</div>
+            <div class="item-name">Better Food</div>
+            <div class="item-desc">+15% Morale</div>
+            <div class="item-count">Own: <span id="count-food">0</span></div>
+            <button class="gold" onclick="buyUpgrade('food', 100)">$100</button>
+        </div>
+    </div>
+</div>
+
+<!-- Prestige & Reset -->
+<div class="card">
+    <div class="section-title">⭐ PRESTIGE SYSTEM</div>
     <div class="stat-card" style="margin-bottom: 10px;">
         <div class="stat-value"><span id="prestige">0</span>x</div>
-        <div class="stat-label">Prestige Multiplier</div>
+        <div class="stat-label">Income Multiplier</div>
     </div>
-    <p style="font-size: 12px; color: #ccc; margin: 10px 0;">Reset progress to earn prestige levels and multiply all income!</p>
     <button class="purple" onclick="prestigeReset()">✨ Prestige Reset</button>
-</div>
-
-<!-- Stats Card -->
-<div class="card">
-    <div class="section-title">📊 Statistics</div>
-    <div class="stats-text">
-        Total Earned: $<span id="totalEarned">0</span><br>
-        Total Vehicles: <span id="totalVehicles">0</span><br>
-        Total Properties: <span id="totalProperties">0</span><br>
-        Play Time: <span id="playTime">0</span>s
-    </div>
-</div>
-
-<!-- Reset Card -->
-<div class="card">
-    <button class="red" onclick="hardReset()">🔄 Hard Reset Game</button>
+    <button class="red" onclick="hardReset()" style="margin-top: 8px;">🔄 Hard Reset</button>
 </div>
 
 </div>
 
 </div>
 
-<!-- Garage Modal -->
-<div class="garage-modal" id="garageModal">
-    <div class="garage-header">
-        <div class="garage-title">🚗 MY GARAGE</div>
-        <div class="garage-close" onclick="closeGarage()">✕</div>
-    </div>
-    <div class="garage-content" id="garageContent">
-        <div class="empty-garage">No vehicles or properties yet. Start earning!</div>
-    </div>
+<!-- Event Modal -->
+<div class="event-modal" id="eventModal">
+    <div class="event-box" id="eventBox"></div>
 </div>
 
 <script>
 
 let money = 0;
 let income = 1;
+let expenses = 0;
 let totalEarned = 0;
-let playTime = 0;
 let prestige = 0;
-let prestigeMultiplier = 1;
 let currentRank = 0;
 
+let inmates = 50;
+let inmateCapacity = 100;
+let security = 50;
+let morale = 75;
+let eventCooldown = 0;
+
 const ranks = [
-    { name: "Corrections Officer Trainee", avatar: "👮", threshold: 1000 },
-    { name: "Corrections Officer", avatar: "👮‍♂️", threshold: 5000 },
-    { name: "Sergeant", avatar: "🧔‍♂️", threshold: 15000 },
-    { name: "Lieutenant", avatar: "👨‍💼", threshold: 40000 },
-    { name: "Captain", avatar: "🧑‍✈️", threshold: 100000 },
-    { name: "Major", avatar: "👨‍🎓", threshold: 250000 },
-    { name: "Deputy Warden", avatar: "👨‍⚖️", threshold: 500000 },
-    { name: "Warden", avatar: "👑", threshold: 1000000 }
+    { name: "Corrections Officer Trainee", threshold: 1000 },
+    { name: "Corrections Officer", threshold: 5000 },
+    { name: "Sergeant", threshold: 15000 },
+    { name: "Lieutenant", threshold: 40000 },
+    { name: "Captain", threshold: 100000 },
+    { name: "Major", threshold: 250000 },
+    { name: "Deputy Warden", threshold: 500000 },
+    { name: "Warden", threshold: 1000000 }
 ];
 
-const vehicles = {
-    car: { cost: 50, income: 0.5, count: 0, icon: "🚗", desc: "A reliable sedan" },
-    truck: { cost: 100, income: 1, count: 0, icon: "🚙", desc: "Heavy duty truck" },
-    sportsCar: { cost: 200, income: 2, count: 0, icon: "🏎️", desc: "Fast sports car" },
-    helicopter: { cost: 500, income: 5, count: 0, icon: "🚁", desc: "Private helicopter" },
-    yacht: { cost: 800, income: 8, count: 0, icon: "🚢", desc: "Luxury yacht" },
-    jet: { cost: 1000, income: 10, count: 0, icon: "✈️", desc: "Private jet" }
+const avatars = ["👮", "👮‍♂️", "🧔‍♂️", "👨‍💼", "🧑‍✈️", "👨‍🎓", "👨‍⚖️", "👑"];
+
+const properties = {
+    studio: { cost: 100, rent: 0.5, count: 0 },
+    condo: { cost: 300, rent: 1.5, count: 0 },
+    duplex: { cost: 800, rent: 4, count: 0 },
+    estate: { cost: 2500, rent: 12, count: 0 }
 };
 
-const houses = {
-    apartment: { cost: 150, income: 1, count: 0, icon: "🏠", desc: "Cozy apartment" },
-    house: { cost: 400, income: 3, count: 0, icon: "🏡", desc: "Modern house" },
-    mansion: { cost: 1500, income: 10, count: 0, icon: "🏰", desc: "Luxury mansion" },
-    skyscraper: { cost: 5000, income: 20, count: 0, icon: "🏢", desc: "Downtown skyscraper" }
+const staff = {
+    guard: { cost: 50, count: 0, securityBoost: 5, moraleImpact: 0 },
+    doctor: { cost: 80, count: 0, securityBoost: 0, moraleImpact: 10 }
 };
 
 const upgrades = {
-    worker: { cost: 10, income: 0.1, count: 0 },
-    manager: { cost: 100, income: 1, count: 0 },
-    company: { cost: 500, income: 5, count: 0 },
-    corporation: { cost: 2000, income: 25, count: 0 }
+    recreation: { cost: 75, count: 0, moraleBoost: 10 },
+    food: { cost: 100, count: 0, moraleBoost: 15 }
 };
+
+function calculateIncome() {
+    let baseIncome = 1;
+    let rentIncome = Object.values(properties).reduce((sum, p) => sum + (p.count * p.rent), 0);
+    income = (baseIncome + rentIncome) * (1 + prestige * 0.5);
+    return income;
+}
+
+function calculateExpenses() {
+    expenses = (staff.guard.count * 50 + staff.doctor.count * 80) / 10;
+    return expenses;
+}
 
 function updateRank() {
     for(let i = ranks.length - 1; i >= 0; i--) {
@@ -647,75 +647,29 @@ function updateRank() {
     }
 }
 
-function calculateIncome() {
-    let base = 1;
-    let vehicleIncome = Object.values(vehicles).reduce((sum, v) => sum + (v.count * v.income), 0);
-    let houseIncome = Object.values(houses).reduce((sum, h) => sum + (h.count * h.income), 0);
-    let upgradeIncome = Object.values(upgrades).reduce((sum, u) => sum + (u.count * u.income), 0);
-    income = (base + vehicleIncome + houseIncome + upgradeIncome) * (1 + prestige * 0.5);
-    return income;
+function updateStats() {
+    security = Math.min(100, 50 + (staff.guard.count * 5));
+    morale = Math.max(0, Math.min(100, 75 + (staff.doctor.count * 10) + Object.values(upgrades).reduce((sum, u) => sum + (u.count * u.moraleBoost), 0)));
+    
+    document.getElementById("inmates").innerText = inmates;
+    document.getElementById("inmateCapacity").innerText = inmateCapacity;
+    document.getElementById("security").innerText = Math.floor(security);
+    document.getElementById("morale").innerText = Math.floor(morale);
+    document.getElementById("staff").innerText = staff.guard.count + staff.doctor.count;
 }
 
-function updateGarage() {
-    let html = '';
-    let hasItems = false;
-    
-    // Add vehicles
-    Object.entries(vehicles).forEach(([key, v]) => {
-        for(let i = 0; i < v.count; i++) {
-            hasItems = true;
-            html += `
-                <div class="garage-item">
-                    <div class="garage-icon">${v.icon}</div>
-                    <div class="garage-name">${key.replace(/([A-Z])/g, ' $1')}</div>
-                    <div class="garage-description">${v.desc}</div>
-                </div>
-            `;
-        }
-    });
-    
-    // Add houses
-    Object.entries(houses).forEach(([key, h]) => {
-        for(let i = 0; i < h.count; i++) {
-            hasItems = true;
-            html += `
-                <div class="garage-item">
-                    <div class="garage-icon">${h.icon}</div>
-                    <div class="garage-name">${key.replace(/([A-Z])/g, ' $1')}</div>
-                    <div class="garage-description">${h.desc}</div>
-                </div>
-            `;
-        }
-    });
-    
-    if(!hasItems) {
-        html = '<div class="empty-garage" style="grid-column: 1 / -1;">No vehicles or properties yet. Start earning!</div>';
-    }
-    
-    document.getElementById("garageContent").innerHTML = html;
-}
-
-function openGarage() {
-    updateGarage();
-    document.getElementById("garageModal").classList.add("active");
-}
-
-function closeGarage() {
-    document.getElementById("garageModal").classList.remove("active");
-}
-
-function update(){
+function update() {
     const displayMoney = Math.floor(money);
     document.getElementById("money").innerText = formatNumber(displayMoney);
     document.getElementById("income").innerText = calculateIncome().toFixed(1);
+    document.getElementById("expenses").innerText = calculateExpenses().toFixed(1);
     document.getElementById("prestige").innerText = prestige;
     
-    // Update avatar and rank
     updateRank();
-    document.getElementById("avatar").innerText = ranks[currentRank].avatar;
+    document.getElementById("avatar").innerText = avatars[currentRank];
     document.getElementById("rankName").innerText = ranks[currentRank].name;
+    document.getElementById("rankNumber").innerText = currentRank + 1;
     
-    // Update rank progress
     let currentThreshold = currentRank > 0 ? ranks[currentRank - 1].threshold : 0;
     let nextThreshold = ranks[currentRank].threshold;
     let progress = totalEarned - currentThreshold;
@@ -726,17 +680,23 @@ function update(){
     document.getElementById("rankNeeded").innerText = formatNumber(Math.floor(needed));
     document.getElementById("rankProgressBar").style.width = progressPercent + "%";
     
-    // Update vehicle counts
-    Object.keys(vehicles).forEach(key => {
+    // Update property counts
+    Object.keys(properties).forEach(key => {
         const el = document.getElementById(`count-${key}`);
-        if(el) el.innerText = vehicles[key].count;
+        if(el) el.innerText = properties[key].count;
     });
     
-    // Update house counts
-    Object.keys(houses).forEach(key => {
+    let rentIncome = Object.values(properties).reduce((sum, p) => sum + (p.count * p.rent), 0);
+    document.getElementById("rentIncome").innerText = rentIncome.toFixed(1);
+    document.getElementById("propertiesOwned").innerText = Object.values(properties).reduce((sum, p) => sum + p.count, 0);
+    
+    // Update staff counts
+    Object.keys(staff).forEach(key => {
         const el = document.getElementById(`count-${key}`);
-        if(el) el.innerText = houses[key].count;
+        if(el) el.innerText = staff[key].count;
     });
+    
+    document.getElementById("payroll").innerText = calculateExpenses().toFixed(1);
     
     // Update upgrade counts
     Object.keys(upgrades).forEach(key => {
@@ -744,73 +704,134 @@ function update(){
         if(el) el.innerText = upgrades[key].count;
     });
     
-    // Update stats
-    document.getElementById("totalEarned").innerText = formatNumber(Math.floor(totalEarned));
-    let totalV = Object.values(vehicles).reduce((sum, v) => sum + v.count, 0);
-    let totalH = Object.values(houses).reduce((sum, h) => sum + h.count, 0);
-    let totalB = Object.values(upgrades).reduce((sum, u) => sum + u.count, 0);
-    document.getElementById("totalVehicles").innerText = totalV;
-    document.getElementById("totalProperties").innerText = totalH;
-    document.getElementById("playTime").innerText = Math.floor(playTime);
+    updateStats();
     
-    // Update button states
-    document.querySelectorAll("button").forEach(btn => {
-        const cost = parseFloat(btn.textContent.match(/\$[\d,KM]+/)?.[0]?.replace(/\D/g, '') || 0);
-        if(cost > 0) btn.disabled = displayMoney < cost;
-    });
-    
-    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, vehicles, houses, upgrades, playTime, currentRank}));
+    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, currentRank, properties, staff, upgrades, inmates, security, morale}));
 }
 
-function work(){
-    money += income;
-    totalEarned += income;
-    float("+$" + income.toFixed(1));
+function work() {
+    let shift = calculateIncome();
+    money += shift;
+    totalEarned += shift;
+    float("+$" + shift.toFixed(1));
+    
+    // Random events
+    if(Math.random() < 0.05) triggerEvent();
+    
     update();
 }
 
-function buyVehicle(type, baseCost) {
-    if (money >= baseCost) {
-        money -= baseCost;
-        vehicles[type].count++;
+function triggerEvent() {
+    const events = [
+        {
+            icon: "💥",
+            title: "INMATE FIGHT!",
+            desc: "A massive fight broke out in the cafeteria. Lose morale and inmates!",
+            choices: [
+                { text: "🛡️ Send Guards ($50)", cost: 50, effect: () => { morale += 10; inmates = Math.max(inmates - 5, 10); } },
+                { text: "🚫 Do Nothing", cost: 0, effect: () => { morale -= 20; inmates = Math.max(inmates - 15, 10); } }
+            ]
+        },
+        {
+            icon: "🔥",
+            title: "FIRE ON UNIT C!",
+            desc: "A fire broke out! Quick action needed!",
+            choices: [
+                { text: "🚒 Emergency Response ($100)", cost: 100, effect: () => { morale -= 5; } },
+                { text: "⚠️ Evacuate ($200)", cost: 200, effect: () => { morale += 5; security += 10; } }
+            ]
+        },
+        {
+            icon: "🚨",
+            title: "ESCAPE ATTEMPT!",
+            desc: "Inmates trying to escape through the fence!",
+            choices: [
+                { text: "🔫 Lockdown ($75)", cost: 75, effect: () => { security += 15; morale -= 10; } },
+                { text: "🛑 Block ($150)", cost: 150, effect: () => { security += 25; } }
+            ]
+        },
+        {
+            icon: "😠",
+            title: "RIOT BREWING!",
+            desc: "Inmates are getting restless. Morale is critical!",
+            choices: [
+                { text: "🍽️ Feed them better ($100)", cost: 100, effect: () => { morale += 20; } },
+                { text: "📺 Allow recreation ($50)", cost: 50, effect: () => { morale += 15; } }
+            ]
+        }
+    ];
+    
+    const event = events[Math.floor(Math.random() * events.length)];
+    showEvent(event);
+}
+
+function showEvent(event) {
+    const modal = document.getElementById("eventModal");
+    const box = document.getElementById("eventBox");
+    
+    let choicesHtml = '';
+    event.choices.forEach((choice, i) => {
+        choicesHtml += `<button class="event-btn blue" onclick="handleEvent(${i}, ${choice.cost})">${choice.text}</button>`;
+    });
+    
+    box.innerHTML = `
+        <div class="event-icon">${event.icon}</div>
+        <div class="event-title">${event.title}</div>
+        <div class="event-description">${event.desc}</div>
+        <div class="event-choices">${choicesHtml}</div>
+    `;
+    
+    modal.classList.add("active");
+    window.currentEvent = event;
+}
+
+function handleEvent(choiceIndex, cost) {
+    if(money < cost) {
+        alert("Not enough money!");
+        return;
+    }
+    
+    money -= cost;
+    const choice = window.currentEvent.choices[choiceIndex];
+    choice.effect();
+    
+    document.getElementById("eventModal").classList.remove("active");
+    float(choice.text);
+    update();
+}
+
+function buyProperty(type, cost) {
+    if(money >= cost) {
+        money -= cost;
+        properties[type].count++;
         float(`+1 ${type}`);
         update();
     }
 }
 
-function buyHouse(type, baseCost) {
-    if (money >= baseCost) {
-        money -= baseCost;
-        houses[type].count++;
+function hireStaff(type, cost) {
+    if(money >= cost) {
+        money -= cost;
+        staff[type].count++;
         float(`+1 ${type}`);
         update();
     }
 }
 
-function buyUpgrade(type, baseCost) {
-    if (money >= baseCost) {
-        money -= baseCost;
+function buyUpgrade(type, cost) {
+    if(money >= cost) {
+        money -= cost;
         upgrades[type].count++;
         float(`+1 ${type}`);
         update();
     }
 }
 
-function float(text){
-    let el = document.createElement("div");
-    el.className="float";
-    el.innerText=text;
-    el.style.left = (window.innerWidth/2)+"px";
-    el.style.top = (window.innerHeight/2)+"px";
-    document.body.appendChild(el);
-    setTimeout(()=>el.remove(),800);
-}
-
-function daily(){
+function daily() {
     let today = new Date().toDateString();
     let last = localStorage.getItem("lastDaily");
 
-    if(last !== today){
+    if(last !== today) {
         let bonus = 100 * (1 + prestige * 0.5);
         money += bonus;
         totalEarned += bonus;
@@ -823,11 +844,11 @@ function daily(){
 }
 
 function prestigeReset() {
-    if(confirm(`You have $${Math.floor(money)}. Prestige reset will multiply your income by ${prestige + 1.5}x permanently. Continue?`)) {
-        prestige = Math.floor(totalEarned / 10000) + 1;
+    if(confirm(`Prestige reset will give you ${prestige + 1}x multiplier. Continue?`)) {
+        prestige++;
         money = 0;
-        Object.keys(vehicles).forEach(k => vehicles[k].count = 0);
-        Object.keys(houses).forEach(k => houses[k].count = 0);
+        Object.keys(properties).forEach(k => properties[k].count = 0);
+        Object.keys(staff).forEach(k => staff[k].count = 0);
         Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
         float(`+${prestige}x Prestige!`);
         update();
@@ -835,19 +856,33 @@ function prestigeReset() {
 }
 
 function hardReset() {
-    if(confirm("Are you sure? This will reset EVERYTHING including prestige!")) {
+    if(confirm("Hard reset EVERYTHING?")) {
         money = 0;
         totalEarned = 0;
         prestige = 0;
-        playTime = 0;
         currentRank = 0;
-        Object.keys(vehicles).forEach(k => vehicles[k].count = 0);
-        Object.keys(houses).forEach(k => houses[k].count = 0);
+        Object.keys(properties).forEach(k => properties[k].count = 0);
+        Object.keys(staff).forEach(k => staff[k].count = 0);
         Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
         localStorage.removeItem("save");
         localStorage.removeItem("lastDaily");
         update();
     }
+}
+
+function togglePrisonMgmt() {
+    const el = document.getElementById("prisonMgmt");
+    el.style.display = el.style.display === "none" ? "block" : "none";
+}
+
+function float(text) {
+    let el = document.createElement("div");
+    el.className = "float";
+    el.innerText = text;
+    el.style.left = (window.innerWidth/2) + "px";
+    el.style.top = (window.innerHeight/2) + "px";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 800);
 }
 
 function formatNumber(num) {
@@ -856,33 +891,36 @@ function formatNumber(num) {
     return num.toString();
 }
 
-// Passive income - 10 times per second for smooth animation
-setInterval(()=>{
-    money += calculateIncome() / 10;
-    totalEarned += calculateIncome() / 10;
+// Passive income
+setInterval(() => {
+    let inc = calculateIncome();
+    let exp = calculateExpenses();
+    money += inc - exp;
+    totalEarned += inc;
     document.getElementById("money").innerText = formatNumber(Math.floor(money));
-    playTime += 0.1;
-},100);
+}, 100);
 
-// Load game
+// Random events
+setInterval(() => {
+    if(Math.random() < 0.01) triggerEvent();
+}, 10000);
+
+// Load
 let save = JSON.parse(localStorage.getItem("save"));
-if(save){
+if(save) {
     money = save.money || 0;
     totalEarned = save.totalEarned || 0;
     prestige = save.prestige || 0;
-    playTime = save.playTime || 0;
     currentRank = save.currentRank || 0;
-    vehicles = save.vehicles || vehicles;
-    houses = save.houses || houses;
+    properties = save.properties || properties;
+    staff = save.staff || staff;
     upgrades = save.upgrades || upgrades;
+    inmates = save.inmates || 50;
+    security = save.security || 50;
+    morale = save.morale || 75;
 }
 
 update();
-
-// Close garage on escape key
-document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') closeGarage();
-});
 
 </script>
 
