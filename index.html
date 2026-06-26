@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Tycoon</title>
+
+<style>
+body {
+    margin:0;
+    font-family: system-ui;
+    background: radial-gradient(circle at top, #0b1220, #05070d);
+    color:white;
+}
+
+.header {
+    text-align:center;
+    padding:16px;
+    font-size:22px;
+    font-weight:bold;
+    background: rgba(255,255,255,0.05);
+}
+
+.container { padding:12px; }
+
+.card {
+    background: rgba(255,255,255,0.06);
+    border-radius:14px;
+    padding:14px;
+    margin-bottom:12px;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+button {
+    width:100%;
+    padding:14px;
+    margin-top:8px;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.green { background:#22c55e; color: white; }
+.blue { background:#3b82f6; color:white; }
+.gold { background:#f59e0b; color: white; }
+.red { background:#ef4444; color: white; }
+
+.float {
+    position:fixed;
+    animation: pop 0.8s ease-out;
+    color:#22c55e;
+    font-weight:bold;
+    pointer-events: none;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+@keyframes pop {
+    0% { transform: translateY(0); opacity:1; }
+    100% { transform: translateY(-60px); opacity:0; }
+}
+
+.upgrade-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.upgrade-btn {
+    padding: 10px !important;
+    font-size: 12px;
+    margin-top: 0 !important;
+}
+
+.upgrade-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.stats {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+.big-button {
+    font-size: 18px;
+    padding: 24px !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">💼 Career Tycoon</div>
+
+<div class="container">
+
+<div class="card">
+    <div style="font-size: 28px; font-weight: bold;">💰 $<span id="money">0</span></div>
+    <div style="margin-top: 8px; color: #9ca3af;">📈 Income: $<span id="income">1</span>/sec</div>
+</div>
+
+<div class="card">
+    <button class="green big-button" onclick="work()">💰 Work</button>
+    <button class="blue" onclick="daily()">🎁 Daily Reward</button>
+</div>
+
+<div class="card">
+    <div style="font-size: 14px; font-weight: bold; margin-bottom: 8px;">⬆️ Upgrades</div>
+    <div class="upgrade-grid">
+        <button class="gold upgrade-btn" onclick="buyUpgrade('worker', 10)">👷 Worker<br><span id="cost-worker">Cost: $10</span></button>
+        <button class="gold upgrade-btn" onclick="buyUpgrade('manager', 100)">👔 Manager<br><span id="cost-manager">Cost: $100</span></button>
+        <button class="gold upgrade-btn" onclick="buyUpgrade('company', 500)">🏢 Company<br><span id="cost-company">Cost: $500</span></button>
+        <button class="gold upgrade-btn" onclick="buyUpgrade('corporation', 2000)">🌐 Corporation<br><span id="cost-corporation">Cost: $2000</span></button>
+    </div>
+    <div class="stats">
+        Workers: <span id="count-worker">0</span> | Managers: <span id="count-manager">0</span> | Companies: <span id="count-company">0</span> | Corporations: <span id="count-corporation">0</span>
+    </div>
+</div>
+
+<div class="card">
+    <button class="red" onclick="reset()">🔄 Reset Game</button>
+</div>
+
+</div>
+
+<script>
+
+let money = 0;
+let income = 1;
+let multiplier = 1;
+
+const upgrades = {
+    worker: { cost: 10, income: 0.1, count: 0 },
+    manager: { cost: 100, income: 1, count: 0 },
+    company: { cost: 500, income: 5, count: 0 },
+    corporation: { cost: 2000, income: 25, count: 0 }
+};
+
+function calculateIncome() {
+    income = 1 + (upgrades.worker.count * 0.1) + (upgrades.manager.count * 1) + (upgrades.company.count * 5) + (upgrades.corporation.count * 25);
+    return income;
+}
+
+function update(){
+    document.getElementById("money").innerText = Math.floor(money);
+    document.getElementById("income").innerText = calculateIncome().toFixed(1);
+    
+    // Update upgrade counts
+    document.getElementById("count-worker").innerText = upgrades.worker.count;
+    document.getElementById("count-manager").innerText = upgrades.manager.count;
+    document.getElementById("count-company").innerText = upgrades.company.count;
+    document.getElementById("count-corporation").innerText = upgrades.corporation.count;
+    
+    // Update button states
+    document.querySelector("button[onclick=\"buyUpgrade('worker', 10)\"]").disabled = money < upgrades.worker.cost;
+    document.querySelector("button[onclick=\"buyUpgrade('manager', 100)\"]").disabled = money < upgrades.manager.cost;
+    document.querySelector("button[onclick=\"buyUpgrade('company', 500)\"]").disabled = money < upgrades.company.cost;
+    document.querySelector("button[onclick=\"buyUpgrade('corporation', 2000)\"]").disabled = money < upgrades.corporation.cost;
+    
+    localStorage.setItem("save", JSON.stringify({money, upgrades}));
+}
+
+function work(){
+    money += income;
+    float("+$" + income.toFixed(1));
+    update();
+}
+
+function buyUpgrade(type, baseCost) {
+    if (money >= baseCost) {
+        money -= baseCost;
+        upgrades[type].count++;
+        float(`+1 ${type}`);
+        update();
+    }
+}
+
+function float(text){
+    let el = document.createElement("div");
+    el.className="float";
+    el.innerText=text;
+    el.style.left = (window.innerWidth/2)+"px";
+    el.style.top = (window.innerHeight/2)+"px";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),800);
+}
+
+function daily(){
+    let today = new Date().toDateString();
+    let last = localStorage.getItem("day");
+
+    if(last !== today){
+        money += 100;
+        localStorage.setItem("day", today);
+        float("+$100 Daily!");
+        update();
+    } else {
+        alert("Daily reward already claimed today!");
+    }
+}
+
+function reset() {
+    if(confirm("Are you sure? This will reset your progress!")) {
+        money = 0;
+        income = 1;
+        upgrades.worker.count = 0;
+        upgrades.manager.count = 0;
+        upgrades.company.count = 0;
+        upgrades.corporation.count = 0;
+        localStorage.removeItem("save");
+        update();
+    }
+}
+
+// Passive income generation every 100ms for smoother updates
+setInterval(()=>{
+    money += calculateIncome() / 10;
+    document.getElementById("money").innerText = Math.floor(money);
+},100);
+
+// Load game
+let save = JSON.parse(localStorage.getItem("save"));
+if(save){
+    money = save.money;
+    upgrades = save.upgrades || upgrades;
+}
+
+update();
+
+</script>
+
+</body>
+</html>
