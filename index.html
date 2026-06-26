@@ -164,10 +164,11 @@ function update(){
     document.getElementById("count-corporation").innerText = upgrades.corporation.count;
     
     // Update button states
-    document.querySelector("button[onclick=\"buyUpgrade('worker', 10)\"]").disabled = money < upgrades.worker.cost;
-    document.querySelector("button[onclick=\"buyUpgrade('manager', 100)\"]").disabled = money < upgrades.manager.cost;
-    document.querySelector("button[onclick=\"buyUpgrade('company', 500)\"]").disabled = money < upgrades.company.cost;
-    document.querySelector("button[onclick=\"buyUpgrade('corporation', 2000)\"]").disabled = money < upgrades.corporation.cost;
+    const buttons = document.querySelectorAll(".upgrade-btn");
+    buttons[0].disabled = money < 10;
+    buttons[1].disabled = money < 100;
+    buttons[2].disabled = money < 500;
+    buttons[3].disabled = money < 2000;
     
     localStorage.setItem("save", JSON.stringify({money, upgrades}));
 }
