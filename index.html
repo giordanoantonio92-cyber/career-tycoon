@@ -5,132 +5,355 @@
 <title>Career Tycoon</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin:0;
-    font-family: system-ui;
-    background: radial-gradient(circle at top, #0b1220, #05070d);
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color:white;
+    min-height: 100vh;
+    padding: 10px;
 }
 
 .header {
     text-align:center;
-    padding:16px;
-    font-size:22px;
+    padding:20px;
+    font-size:32px;
     font-weight:bold;
-    background: rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
-.container { padding:12px; }
+.stats-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius:12px;
+    padding:15px;
+    border:1px solid rgba(255,255,255,0.2);
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 5px;
+}
+
+.container { 
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
 .card {
-    background: rgba(255,255,255,0.06);
-    border-radius:14px;
-    padding:14px;
-    margin-bottom:12px;
-    border:1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border-radius:15px;
+    padding:20px;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }
 
 button {
     width:100%;
-    padding:14px;
-    margin-top:8px;
+    padding:16px;
+    margin-top:10px;
     border:none;
     border-radius:10px;
     font-weight:bold;
     cursor: pointer;
-    transition: transform 0.1s, opacity 0.2s;
+    transition: all 0.2s;
+    font-size: 16px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 button:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
 button:active {
     transform: scale(0.98);
 }
 
-.green { background:#22c55e; color: white; }
-.blue { background:#3b82f6; color:white; }
-.gold { background:#f59e0b; color: white; }
-.red { background:#ef4444; color: white; }
+.green { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
+.blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color:white; }
+.gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+.purple { background: linear-gradient(135deg, #a855f7, #7c3aed); color: white; }
+.red { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
 
 .float {
     position:fixed;
     animation: pop 0.8s ease-out;
-    color:#22c55e;
+    color:#ffd700;
     font-weight:bold;
     pointer-events: none;
-    font-size: 18px;
+    font-size: 20px;
     z-index: 1000;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 @keyframes pop {
-    0% { transform: translateY(0); opacity:1; }
-    100% { transform: translateY(-60px); opacity:0; }
+    0% { transform: translateY(0) scale(1); opacity:1; }
+    100% { transform: translateY(-80px) scale(1.2); opacity:0; }
 }
 
-.upgrade-grid {
+.grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 10px;
 }
 
-.upgrade-btn {
-    padding: 10px !important;
+.grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.upgrade-item {
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
     font-size: 12px;
-    margin-top: 0 !important;
 }
 
-.upgrade-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+.upgrade-item button {
+    margin-top: 5px;
+    padding: 8px !important;
+    font-size: 11px !important;
 }
 
-.stats {
-    font-size: 12px;
-    color: #9ca3af;
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #ffd700;
+}
+
+.vehicle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.vehicle-item {
+    background: rgba(0,0,0,0.2);
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.1);
+    transition: all 0.2s;
+}
+
+.vehicle-item:hover {
+    border-color: rgba(255,215,0,0.5);
+    background: rgba(0,0,0,0.4);
+}
+
+.vehicle-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.vehicle-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.vehicle-income {
+    font-size: 11px;
+    color: #aaa;
+    margin: 5px 0;
+}
+
+.vehicle-item button {
     margin-top: 8px;
+    padding: 8px !important;
+    font-size: 12px !important;
 }
 
 .big-button {
+    font-size: 24px;
+    padding: 28px !important;
+    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+}
+
+.stats-text {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.section-title {
     font-size: 18px;
-    padding: 24px !important;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffd700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">💼 Career Tycoon</div>
+<div class="header">💼 Career Tycoon 🚀</div>
+
+<div class="stats-bar">
+    <div class="stat-card">
+        <div class="stat-value">$<span id="money">0</span></div>
+        <div class="stat-label">Total Money</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">$<span id="income">1</span></div>
+        <div class="stat-label">Income/sec</div>
+    </div>
+</div>
 
 <div class="container">
 
+<!-- Main Action Card -->
 <div class="card">
-    <div style="font-size: 28px; font-weight: bold;">💰 $<span id="money">0</span></div>
-    <div style="margin-top: 8px; color: #9ca3af;">📈 Income: $<span id="income">1</span>/sec</div>
+    <button class="big-button green" onclick="work()">💰 Work</button>
+    <button class="blue" onclick="daily()">🎁 Daily Bonus: $<span id="dailyAmount">100</span></button>
 </div>
 
+<!-- Vehicles Card -->
 <div class="card">
-    <button class="green big-button" onclick="work()">💰 Work</button>
-    <button class="blue" onclick="daily()">🎁 Daily Reward</button>
-</div>
-
-<div class="card">
-    <div style="font-size: 14px; font-weight: bold; margin-bottom: 8px;">⬆️ Upgrades</div>
-    <div class="upgrade-grid">
-        <button class="gold upgrade-btn" onclick="buyUpgrade('worker', 10)">👷 Worker<br><span id="cost-worker">Cost: $10</span></button>
-        <button class="gold upgrade-btn" onclick="buyUpgrade('manager', 100)">👔 Manager<br><span id="cost-manager">Cost: $100</span></button>
-        <button class="gold upgrade-btn" onclick="buyUpgrade('company', 500)">🏢 Company<br><span id="cost-company">Cost: $500</span></button>
-        <button class="gold upgrade-btn" onclick="buyUpgrade('corporation', 2000)">🌐 Corporation<br><span id="cost-corporation">Cost: $2000</span></button>
+    <div class="section-title">🚗 Vehicles & Assets</div>
+    <div class="vehicle-grid">
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🚗</div>
+            <div class="vehicle-name">Car</div>
+            <div class="vehicle-income">+$0.5/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-car">0</span></div>
+            <button class="gold" onclick="buyVehicle('car', 50)">Buy $50</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🏎️</div>
+            <div class="vehicle-name">Sports Car</div>
+            <div class="vehicle-income">+$2/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-sportsCar">0</span></div>
+            <button class="purple" onclick="buyVehicle('sportsCar', 200)">Buy $200</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🚙</div>
+            <div class="vehicle-name">Truck</div>
+            <div class="vehicle-income">+$1/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-truck">0</span></div>
+            <button class="gold" onclick="buyVehicle('truck', 100)">Buy $100</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">✈️</div>
+            <div class="vehicle-name">Jet</div>
+            <div class="vehicle-income">+$10/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-jet">0</span></div>
+            <button class="blue" onclick="buyVehicle('jet', 1000)">Buy $1K</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🚁</div>
+            <div class="vehicle-name">Helicopter</div>
+            <div class="vehicle-income">+$5/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-helicopter">0</span></div>
+            <button class="purple" onclick="buyVehicle('helicopter', 500)">Buy $500</button>
+        </div>
+        <div class="vehicle-item">
+            <div class="vehicle-icon">🚢</div>
+            <div class="vehicle-name">Yacht</div>
+            <div class="vehicle-income">+$8/sec</div>
+            <div style="font-size: 11px; color: #ffd700;">Own: <span id="count-yacht">0</span></div>
+            <button class="blue" onclick="buyVehicle('yacht', 800)">Buy $800</button>
+        </div>
     </div>
-    <div class="stats">
-        Workers: <span id="count-worker">0</span> | Managers: <span id="count-manager">0</span> | Companies: <span id="count-company">0</span> | Corporations: <span id="count-corporation">0</span>
+</div>
+
+<!-- Business Upgrades Card -->
+<div class="card">
+    <div class="section-title">🏢 Business Upgrades</div>
+    <div class="grid-2">
+        <div class="upgrade-item">
+            <div style="font-size: 20px; margin-bottom: 5px;">👷</div>
+            <div>Worker</div>
+            <div style="font-size: 10px; color: #aaa;">+$0.1/sec</div>
+            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-worker">0</span></div>
+            <button class="gold" onclick="buyUpgrade('worker', 10)">$10</button>
+        </div>
+        <div class="upgrade-item">
+            <div style="font-size: 20px; margin-bottom: 5px;">👔</div>
+            <div>Manager</div>
+            <div style="font-size: 10px; color: #aaa;">+$1/sec</div>
+            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-manager">0</span></div>
+            <button class="gold" onclick="buyUpgrade('manager', 100)">$100</button>
+        </div>
+        <div class="upgrade-item">
+            <div style="font-size: 20px; margin-bottom: 5px;">🏢</div>
+            <div>Company</div>
+            <div style="font-size: 10px; color: #aaa;">+$5/sec</div>
+            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-company">0</span></div>
+            <button class="gold" onclick="buyUpgrade('company', 500)">$500</button>
+        </div>
+        <div class="upgrade-item">
+            <div style="font-size: 20px; margin-bottom: 5px;">🌐</div>
+            <div>Corporation</div>
+            <div style="font-size: 10px; color: #aaa;">+$25/sec</div>
+            <div style="font-size: 11px; color: #ffd700; margin-top: 5px;">Own: <span id="count-corporation">0</span></div>
+            <button class="blue" onclick="buyUpgrade('corporation', 2000)">$2K</button>
+        </div>
     </div>
 </div>
 
+<!-- Prestige Card -->
 <div class="card">
-    <button class="red" onclick="reset()">🔄 Reset Game</button>
+    <div class="section-title">⭐ Prestige System</div>
+    <div class="stat-card" style="margin-bottom: 10px;">
+        <div class="stat-value"><span id="prestige">0</span>x</div>
+        <div class="stat-label">Prestige Multiplier</div>
+    </div>
+    <p style="font-size: 12px; color: #ccc; margin: 10px 0;">Reset progress to earn prestige levels and multiply all income!</p>
+    <button class="purple" onclick="prestigeReset()">✨ Prestige Reset</button>
+</div>
+
+<!-- Stats Card -->
+<div class="card">
+    <div class="section-title">📊 Statistics</div>
+    <div class="stats-text">
+        Total Earned: $<span id="totalEarned">0</span><br>
+        Total Vehicles: <span id="totalVehicles">0</span><br>
+        Total Businesses: <span id="totalBusinesses">0</span><br>
+        Play Time: <span id="playTime">0</span>s
+    </div>
+</div>
+
+<!-- Reset Card -->
+<div class="card">
+    <button class="red" onclick="hardReset()">🔄 Hard Reset Game</button>
 </div>
 
 </div>
@@ -139,7 +362,19 @@ button:active {
 
 let money = 0;
 let income = 1;
-let multiplier = 1;
+let totalEarned = 0;
+let playTime = 0;
+let prestige = 0;
+let prestigeMultiplier = 1;
+
+const vehicles = {
+    car: { cost: 50, income: 0.5, count: 0 },
+    truck: { cost: 100, income: 1, count: 0 },
+    sportsCar: { cost: 200, income: 2, count: 0 },
+    helicopter: { cost: 500, income: 5, count: 0 },
+    yacht: { cost: 800, income: 8, count: 0 },
+    jet: { cost: 1000, income: 10, count: 0 }
+};
 
 const upgrades = {
     worker: { cost: 10, income: 0.1, count: 0 },
@@ -149,34 +384,62 @@ const upgrades = {
 };
 
 function calculateIncome() {
-    income = 1 + (upgrades.worker.count * 0.1) + (upgrades.manager.count * 1) + (upgrades.company.count * 5) + (upgrades.corporation.count * 25);
+    let base = 1;
+    let vehicleIncome = Object.values(vehicles).reduce((sum, v) => sum + (v.count * v.income), 0);
+    let upgradeIncome = Object.values(upgrades).reduce((sum, u) => sum + (u.count * u.income), 0);
+    income = (base + vehicleIncome + upgradeIncome) * (1 + prestige * 0.5);
     return income;
 }
 
 function update(){
-    document.getElementById("money").innerText = Math.floor(money);
+    const displayMoney = Math.floor(money);
+    document.getElementById("money").innerText = formatNumber(displayMoney);
     document.getElementById("income").innerText = calculateIncome().toFixed(1);
+    document.getElementById("prestige").innerText = prestige;
+    
+    // Update vehicle counts
+    Object.keys(vehicles).forEach(key => {
+        const el = document.getElementById(`count-${key}`);
+        if(el) el.innerText = vehicles[key].count;
+    });
     
     // Update upgrade counts
-    document.getElementById("count-worker").innerText = upgrades.worker.count;
-    document.getElementById("count-manager").innerText = upgrades.manager.count;
-    document.getElementById("count-company").innerText = upgrades.company.count;
-    document.getElementById("count-corporation").innerText = upgrades.corporation.count;
+    Object.keys(upgrades).forEach(key => {
+        const el = document.getElementById(`count-${key}`);
+        if(el) el.innerText = upgrades[key].count;
+    });
+    
+    // Update stats
+    document.getElementById("totalEarned").innerText = formatNumber(Math.floor(totalEarned));
+    let totalV = Object.values(vehicles).reduce((sum, v) => sum + v.count, 0);
+    let totalB = Object.values(upgrades).reduce((sum, u) => sum + u.count, 0);
+    document.getElementById("totalVehicles").innerText = totalV;
+    document.getElementById("totalBusinesses").innerText = totalB;
+    document.getElementById("playTime").innerText = Math.floor(playTime);
     
     // Update button states
-    const buttons = document.querySelectorAll(".upgrade-btn");
-    buttons[0].disabled = money < 10;
-    buttons[1].disabled = money < 100;
-    buttons[2].disabled = money < 500;
-    buttons[3].disabled = money < 2000;
+    document.querySelectorAll("button").forEach(btn => {
+        const cost = parseFloat(btn.textContent.match(/\$[\d,]+/)?.[0]?.replace(/\D/g, '') || 0);
+        if(cost > 0) btn.disabled = displayMoney < cost;
+    });
     
-    localStorage.setItem("save", JSON.stringify({money, upgrades}));
+    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, vehicles, upgrades, playTime}));
 }
 
 function work(){
     money += income;
+    totalEarned += income;
     float("+$" + income.toFixed(1));
     update();
+}
+
+function buyVehicle(type, baseCost) {
+    if (money >= baseCost) {
+        money -= baseCost;
+        vehicles[type].count++;
+        float(`+1 ${type}`);
+        update();
+    }
 }
 
 function buyUpgrade(type, baseCost) {
@@ -200,41 +463,75 @@ function float(text){
 
 function daily(){
     let today = new Date().toDateString();
-    let last = localStorage.getItem("day");
+    let last = localStorage.getItem("lastDaily");
 
     if(last !== today){
-        money += 100;
-        localStorage.setItem("day", today);
-        float("+$100 Daily!");
+        let bonus = 100 * (1 + prestige * 0.5);
+        money += bonus;
+        totalEarned += bonus;
+        localStorage.setItem("lastDaily", today);
+        float("+$" + Math.floor(bonus) + " Daily!");
         update();
     } else {
-        alert("Daily reward already claimed today!");
+        alert("Daily bonus already claimed today!");
     }
 }
 
-function reset() {
-    if(confirm("Are you sure? This will reset your progress!")) {
+function prestigeReset() {
+    if(confirm(`You have $${Math.floor(money)}. Prestige reset will multiply your income by ${prestige + 1.5}x permanently. Continue?`)) {
+        prestige = Math.floor(totalEarned / 10000) + 1;
         money = 0;
-        income = 1;
-        upgrades.worker.count = 0;
-        upgrades.manager.count = 0;
-        upgrades.company.count = 0;
-        upgrades.corporation.count = 0;
-        localStorage.removeItem("save");
+        Object.keys(vehicles).forEach(k => vehicles[k].count = 0);
+        Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
+        float(`+${prestige}x Prestige!`);
         update();
     }
 }
 
-// Passive income generation every 100ms for smoother updates
+function hardReset() {
+    if(confirm("Are you sure? This will reset EVERYTHING including prestige!")) {
+        money = 0;
+        totalEarned = 0;
+        prestige = 0;
+        playTime = 0;
+        Object.keys(vehicles).forEach(k => vehicles[k].count = 0);
+        Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
+        localStorage.removeItem("save");
+        localStorage.removeItem("lastDaily");
+        update();
+    }
+}
+
+function formatNumber(num) {
+    if(num >= 1000000) return (num / 1000000).toFixed(1) + "M";
+    if(num >= 1000) return (num / 1000).toFixed(1) + "K";
+    return num.toString();
+}
+
+// Passive income - 10 times per second for smooth animation
 setInterval(()=>{
     money += calculateIncome() / 10;
-    document.getElementById("money").innerText = Math.floor(money);
+    totalEarned += calculateIncome() / 10;
+    document.getElementById("money").innerText = formatNumber(Math.floor(money));
+    playTime += 0.1;
 },100);
+
+// Load game every 30 seconds
+setInterval(()=>{
+    let save = JSON.parse(localStorage.getItem("save"));
+    if(save && save.playTime && playTime - save.playTime > 25) {
+        update();
+    }
+}, 30000);
 
 // Load game
 let save = JSON.parse(localStorage.getItem("save"));
 if(save){
-    money = save.money;
+    money = save.money || 0;
+    totalEarned = save.totalEarned || 0;
+    prestige = save.prestige || 0;
+    playTime = save.playTime || 0;
+    vehicles = save.vehicles || vehicles;
     upgrades = save.upgrades || upgrades;
 }
 
