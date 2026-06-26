@@ -18,6 +18,7 @@ body {
     min-height: 100vh;
     padding: 10px;
     position: relative;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -34,6 +35,19 @@ body::before {
     z-index: 1;
 }
 
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(0deg, rgba(255,215,0,0.02), rgba(255,215,0,0.02) 2px, transparent 2px, transparent 4px);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .overlay {
     position: relative;
     z-index: 2;
@@ -44,32 +58,32 @@ body::before {
     padding:15px;
     font-size:28px;
     font-weight:bold;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
     border-radius: 15px;
     margin-bottom: 12px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    border: 3px solid rgba(255,215,0,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+    border: 3px solid rgba(255,215,0,0.5);
 }
 
 .avatar-section {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 150px 1fr;
     gap: 15px;
     align-items: center;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
     backdrop-filter: blur(10px);
     border-radius:15px;
     padding:15px;
-    border:3px solid rgba(255,215,0,0.4);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    border:3px solid rgba(255,215,0,0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.8);
     margin-bottom: 12px;
 }
 
 .avatar-display {
-    font-size: 100px;
+    font-size: 130px;
     text-align: center;
     animation: bounce 2s infinite;
-    text-shadow: 0 4px 8px rgba(0,0,0,0.7);
+    text-shadow: 0 4px 8px rgba(0,0,0,0.9);
     line-height: 1;
 }
 
@@ -88,7 +102,7 @@ body::before {
     font-size: 16px;
     font-weight: bold;
     color: #ffd700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9);
 }
 
 .rank-progress {
@@ -96,7 +110,7 @@ body::before {
     height: 18px;
     border-radius: 10px;
     overflow: hidden;
-    border: 2px solid rgba(255,215,0,0.3);
+    border: 2px solid rgba(255,215,0,0.4);
 }
 
 .rank-progress-bar {
@@ -112,30 +126,43 @@ body::before {
     margin-top: 3px;
 }
 
+.promotion-btn {
+    background: linear-gradient(135deg, #ff6b6b, #ff0000) !important;
+    padding: 10px !important;
+    font-size: 12px !important;
+    animation: pulse 1.5s infinite;
+    margin-top: 8px !important;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
 .stats-bar {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
     margin-bottom: 12px;
 }
 
 .stat-card {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     backdrop-filter: blur(10px);
     border-radius:10px;
-    padding:12px;
+    padding:10px;
     border:2px solid rgba(255,215,0,0.3);
     text-align: center;
 }
 
 .stat-value {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #ffd700;
 }
 
 .stat-label {
-    font-size: 11px;
+    font-size: 10px;
     color: #ccc;
     margin-top: 3px;
 }
@@ -149,12 +176,12 @@ body::before {
 }
 
 .card {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     backdrop-filter: blur(10px);
     border-radius:12px;
     padding:15px;
     border:2px solid rgba(255,215,0,0.3);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
 }
 
 button {
@@ -199,7 +226,7 @@ button:disabled {
     pointer-events: none;
     font-size: 18px;
     z-index: 1000;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9);
 }
 
 @keyframes pop {
@@ -212,7 +239,7 @@ button:disabled {
     font-weight: bold;
     margin-bottom: 12px;
     color: #ffd700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7);
 }
 
 .grid-2 {
@@ -221,14 +248,8 @@ button:disabled {
     gap: 10px;
 }
 
-.grid-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
-}
-
 .item {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4);
     padding: 10px;
     border-radius: 8px;
     border: 2px solid rgba(255,215,0,0.2);
@@ -238,7 +259,7 @@ button:disabled {
 
 .item:hover {
     border-color: rgba(255,215,0,0.6);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
 }
 
 .item-icon {
@@ -268,6 +289,120 @@ button:disabled {
     margin-top: 5px;
     padding: 6px !important;
     font-size: 11px !important;
+}
+
+.prison-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.prison-stat {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #ffd700;
+}
+
+.prison-stat-label {
+    color: #aaa;
+    margin-bottom: 3px;
+}
+
+.prison-stat-value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.mood-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.mood-icon {
+    font-size: 28px;
+}
+
+.mood-bar {
+    flex: 1;
+    background: rgba(0,0,0,0.5);
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,215,0,0.3);
+}
+
+.mood-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #ffd700);
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.mood-fill.angry {
+    background: linear-gradient(90deg, #ff6b6b, #dc2626);
+}
+
+.mood-fill.neutral {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.property-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.property-item {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,215,0,0.2);
+    text-align: center;
+}
+
+.property-item:hover {
+    border-color: rgba(255,215,0,0.6);
+    background: rgba(0,0,0,0.6);
+}
+
+.property-icon {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.property-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.property-rent {
+    font-size: 10px;
+    color: #22c55e;
+    margin: 3px 0;
+}
+
+.property-owned {
+    font-size: 10px;
+    color: #ffd700;
+}
+
+.property-item button {
+    padding: 6px !important;
+    font-size: 11px !important;
+}
+
+.big-button {
+    font-size: 20px;
+    padding: 20px !important;
 }
 
 .event-modal {
@@ -328,80 +463,77 @@ button:disabled {
     font-size: 13px !important;
 }
 
-.prison-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    font-size: 12px;
+.promotion-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 3000;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.prison-stat {
-    background: rgba(0,0,0,0.3);
-    padding: 10px;
-    border-radius: 8px;
-    border-left: 3px solid #ffd700;
+.promotion-modal.active {
+    display: flex;
 }
 
-.prison-stat-label {
-    color: #aaa;
-    margin-bottom: 3px;
-}
-
-.prison-stat-value {
-    font-size: 14px;
-    font-weight: bold;
-    color: #ffd700;
-}
-
-.property-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.property-item {
-    background: rgba(0,0,0,0.3);
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid rgba(255,215,0,0.2);
+.promotion-box {
+    background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,100,0,0.2));
+    border: 3px solid #ffd700;
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 500px;
     text-align: center;
 }
 
-.property-item:hover {
-    border-color: rgba(255,215,0,0.6);
-    background: rgba(0,0,0,0.5);
+.promotion-icon {
+    font-size: 100px;
+    margin-bottom: 20px;
+    animation: celebrate 0.6s ease-out;
 }
 
-.property-icon {
-    font-size: 40px;
-    margin-bottom: 5px;
+@keyframes celebrate {
+    0% { transform: scale(0) rotate(-180deg); }
+    100% { transform: scale(1) rotate(0); }
 }
 
-.property-name {
-    font-size: 12px;
+.promotion-title {
+    font-size: 28px;
     font-weight: bold;
     color: #ffd700;
+    margin-bottom: 15px;
 }
 
-.property-rent {
-    font-size: 10px;
-    color: #22c55e;
-    margin: 3px 0;
-}
-
-.property-owned {
-    font-size: 10px;
-    color: #ffd700;
-}
-
-.property-item button {
-    padding: 6px !important;
-    font-size: 11px !important;
-}
-
-.big-button {
+.promotion-rank {
     font-size: 20px;
-    padding: 20px !important;
+    color: #ffed4e;
+    margin-bottom: 20px;
+}
+
+.promotion-rewards {
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.promotion-reward-text {
+    font-size: 14px;
+    color: #22c55e;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.promotion-btn-claim {
+    background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+    color: #000 !important;
+    font-size: 16px !important;
+    padding: 15px !important;
 }
 </style>
 </head>
@@ -418,12 +550,13 @@ button:disabled {
     <div class="avatar-info">
         <div class="rank-info">
             <span id="rankName">Trainee</span>
-            <div class="rank-progress-text">Rank <span id="rankNumber">1</span>/8</div>
+            <div class="rank-progress-text">Rank <span id="rankNumber">1</span>/8 | Wage: $<span id="wage">1</span>/shift</div>
         </div>
         <div class="rank-progress">
             <div class="rank-progress-bar" id="rankProgressBar"></div>
         </div>
         <div class="rank-progress-text">Progress: $<span id="rankProgress">0</span> / $<span id="rankNeeded">1000</span></div>
+        <button class="promotion-btn" id="promotionBtn" onclick="claimPromotion()" style="display:none;">🎉 CLAIM PROMOTION</button>
     </div>
 </div>
 
@@ -434,11 +567,15 @@ button:disabled {
     </div>
     <div class="stat-card">
         <div class="stat-value">$<span id="income">1</span></div>
-        <div class="stat-label">Income/sec</div>
+        <div class="stat-label">Income/shift</div>
     </div>
     <div class="stat-card">
         <div class="stat-value">$<span id="expenses">0</span></div>
-        <div class="stat-label">Expenses/sec</div>
+        <div class="stat-label">Payroll/sec</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><span id="prestige">0</span>x</div>
+        <div class="stat-label">Prestige</div>
     </div>
 </div>
 
@@ -446,8 +583,23 @@ button:disabled {
 
 <!-- Main Actions -->
 <div class="card">
-    <button class="big-button green" onclick="work()">💰 Work Shift</button>
+    <button class="big-button green" onclick="work()">💰 Work Shift ($<span id="shiftPay">1</span>)</button>
     <button class="blue" onclick="daily()">🎁 Daily Bonus</button>
+</div>
+
+<!-- Inmate Mood -->
+<div class="card">
+    <div class="section-title">😠 INMATE MOOD</div>
+    <div class="mood-indicator">
+        <div class="mood-icon" id="moodIcon">😐</div>
+        <div class="mood-bar">
+            <div class="mood-fill" id="moodFill" style="width: 60%"></div>
+        </div>
+        <div style="min-width: 50px; text-align: right;">
+            <div style="font-size: 12px; color: #ffd700; font-weight: bold;" id="moodLevel">Neutral</div>
+            <div style="font-size: 10px; color: #aaa;"><span id="moodPercent">60</span>%</div>
+        </div>
+    </div>
 </div>
 
 <!-- Prison Management -->
@@ -467,8 +619,8 @@ button:disabled {
             <div class="prison-stat-value"><span id="staff">5</span></div>
         </div>
         <div class="prison-stat">
-            <div class="prison-stat-label">Morale</div>
-            <div class="prison-stat-value"><span id="morale">75</span>%</div>
+            <div class="prison-stat-label">Facility Grade</div>
+            <div class="prison-stat-value"><span id="grade">D</span></div>
         </div>
     </div>
     <button class="gold" onclick="togglePrisonMgmt()" style="margin-top: 12px;">⚙️ Manage Prison</button>
@@ -537,23 +689,23 @@ button:disabled {
     </div>
 </div>
 
-<!-- Upgrades -->
+<!-- Inmate Amenities -->
 <div class="card">
-    <div class="section-title">⬆️ FACILITY UPGRADES</div>
+    <div class="section-title">🍽️ INMATE AMENITIES (Improve Mood)</div>
     <div class="grid-2">
-        <div class="item">
-            <div class="item-icon">📺</div>
-            <div class="item-name">Recreation</div>
-            <div class="item-desc">+10% Morale</div>
-            <div class="item-count">Own: <span id="count-recreation">0</span></div>
-            <button class="gold" onclick="buyUpgrade('recreation', 75)">$75</button>
-        </div>
         <div class="item">
             <div class="item-icon">🍽️</div>
             <div class="item-name">Better Food</div>
-            <div class="item-desc">+15% Morale</div>
+            <div class="item-desc">+20% Mood</div>
             <div class="item-count">Own: <span id="count-food">0</span></div>
-            <button class="gold" onclick="buyUpgrade('food', 100)">$100</button>
+            <button class="gold" onclick="buyAmenity('food', 100)">$100</button>
+        </div>
+        <div class="item">
+            <div class="item-icon">📺</div>
+            <div class="item-name">Recreation</div>
+            <div class="item-desc">+25% Mood</div>
+            <div class="item-count">Own: <span id="count-recreation">0</span></div>
+            <button class="gold" onclick="buyAmenity('recreation', 150)">$150</button>
         </div>
     </div>
 </div>
@@ -561,16 +713,27 @@ button:disabled {
 <!-- Prestige & Reset -->
 <div class="card">
     <div class="section-title">⭐ PRESTIGE SYSTEM</div>
-    <div class="stat-card" style="margin-bottom: 10px;">
-        <div class="stat-value"><span id="prestige">0</span>x</div>
-        <div class="stat-label">Income Multiplier</div>
-    </div>
     <button class="purple" onclick="prestigeReset()">✨ Prestige Reset</button>
     <button class="red" onclick="hardReset()" style="margin-top: 8px;">🔄 Hard Reset</button>
 </div>
 
 </div>
 
+</div>
+
+<!-- Promotion Modal -->
+<div class="promotion-modal" id="promotionModal">
+    <div class="promotion-box">
+        <div class="promotion-icon">🎉</div>
+        <div class="promotion-title">PROMOTION!</div>
+        <div class="promotion-rank" id="promotionRankText"></div>
+        <div class="promotion-rewards">
+            <div class="promotion-reward-text">💰 Wage increased to: $<span id="promotionWage">1</span>/shift</div>
+            <div class="promotion-reward-text">📈 +50% Income Boost</div>
+            <div class="promotion-reward-text">🎖️ Rank <span id="promotionRankNumber">1</span>/8</div>
+        </div>
+        <button class="promotion-btn-claim" onclick="closePromotion()">CLAIM REWARD</button>
+    </div>
 </div>
 
 <!-- Event Modal -->
@@ -586,22 +749,23 @@ let expenses = 0;
 let totalEarned = 0;
 let prestige = 0;
 let currentRank = 0;
+let readyForPromotion = false;
 
 let inmates = 50;
 let inmateCapacity = 100;
 let security = 50;
-let morale = 75;
+let mood = 60;
 let eventCooldown = 0;
 
 const ranks = [
-    { name: "Corrections Officer Trainee", threshold: 1000 },
-    { name: "Corrections Officer", threshold: 5000 },
-    { name: "Sergeant", threshold: 15000 },
-    { name: "Lieutenant", threshold: 40000 },
-    { name: "Captain", threshold: 100000 },
-    { name: "Major", threshold: 250000 },
-    { name: "Deputy Warden", threshold: 500000 },
-    { name: "Warden", threshold: 1000000 }
+    { name: "Corrections Officer Trainee", wage: 1, threshold: 1000 },
+    { name: "Corrections Officer", wage: 2, threshold: 5000 },
+    { name: "Sergeant", wage: 4, threshold: 15000 },
+    { name: "Lieutenant", wage: 8, threshold: 40000 },
+    { name: "Captain", wage: 16, threshold: 100000 },
+    { name: "Major", wage: 32, threshold: 250000 },
+    { name: "Deputy Warden", wage: 64, threshold: 500000 },
+    { name: "Warden", wage: 128, threshold: 1000000 }
 ];
 
 const avatars = ["👮", "👮‍♂️", "🧔‍♂️", "👨‍💼", "🧑‍✈️", "👨‍🎓", "👨‍⚖️", "👑"];
@@ -614,19 +778,26 @@ const properties = {
 };
 
 const staff = {
-    guard: { cost: 50, count: 0, securityBoost: 5, moraleImpact: 0 },
-    doctor: { cost: 80, count: 0, securityBoost: 0, moraleImpact: 10 }
+    guard: { cost: 50, count: 0, securityBoost: 5 },
+    doctor: { cost: 80, count: 0, moraleBoost: 10 }
 };
 
-const upgrades = {
-    recreation: { cost: 75, count: 0, moraleBoost: 10 },
-    food: { cost: 100, count: 0, moraleBoost: 15 }
+const amenities = {
+    food: { cost: 100, count: 0, moodBoost: 20 },
+    recreation: { cost: 150, count: 0, moodBoost: 25 }
 };
+
+function getMoodState() {
+    if(mood >= 75) return { level: "Happy", icon: "😊", color: "green" };
+    if(mood >= 50) return { level: "Neutral", icon: "😐", color: "neutral" };
+    if(mood >= 25) return { level: "Angry", icon: "😠", color: "angry" };
+    return { level: "Rioting", icon: "🤬", color: "angry" };
+}
 
 function calculateIncome() {
-    let baseIncome = 1;
+    let baseWage = ranks[currentRank].wage;
     let rentIncome = Object.values(properties).reduce((sum, p) => sum + (p.count * p.rent), 0);
-    income = (baseIncome + rentIncome) * (1 + prestige * 0.5);
+    income = (baseWage + rentIncome) * (1 + prestige * 0.5);
     return income;
 }
 
@@ -638,24 +809,43 @@ function calculateExpenses() {
 function updateRank() {
     for(let i = ranks.length - 1; i >= 0; i--) {
         if(totalEarned >= ranks[i].threshold) {
-            if(currentRank !== i) {
-                float(`⭐ Promoted to ${ranks[i].name}!`);
+            if(currentRank !== i && i !== ranks.length - 1) {
+                readyForPromotion = true;
+                document.getElementById("promotionBtn").style.display = "block";
+            } else if(currentRank !== i) {
                 currentRank = i;
+                readyForPromotion = false;
+                document.getElementById("promotionBtn").style.display = "none";
             }
             break;
         }
     }
 }
 
+function updateMood() {
+    let moodChange = Object.values(amenities).reduce((sum, a) => sum + (a.count * a.moodBoost), 0);
+    if(mood < 100) mood = Math.min(100, mood + moodChange * 0.01);
+    if(mood > 0) mood = Math.max(0, mood - 0.1);
+    
+    const moodState = getMoodState();
+    document.getElementById("moodIcon").innerText = moodState.icon;
+    document.getElementById("moodLevel").innerText = moodState.level;
+    document.getElementById("moodPercent").innerText = Math.floor(mood);
+    document.getElementById("moodFill").className = "mood-fill " + (moodState.color === "green" ? "" : moodState.color);
+    document.getElementById("moodFill").style.width = mood + "%";
+    
+    if(mood < 25 && Math.random() < 0.03) triggerEvent();
+}
+
 function updateStats() {
     security = Math.min(100, 50 + (staff.guard.count * 5));
-    morale = Math.max(0, Math.min(100, 75 + (staff.doctor.count * 10) + Object.values(upgrades).reduce((sum, u) => sum + (u.count * u.moraleBoost), 0)));
-    
     document.getElementById("inmates").innerText = inmates;
     document.getElementById("inmateCapacity").innerText = inmateCapacity;
     document.getElementById("security").innerText = Math.floor(security);
-    document.getElementById("morale").innerText = Math.floor(morale);
     document.getElementById("staff").innerText = staff.guard.count + staff.doctor.count;
+    
+    const grade = security > 80 ? "A" : security > 60 ? "B" : security > 40 ? "C" : "D";
+    document.getElementById("grade").innerText = grade;
 }
 
 function update() {
@@ -664,6 +854,8 @@ function update() {
     document.getElementById("income").innerText = calculateIncome().toFixed(1);
     document.getElementById("expenses").innerText = calculateExpenses().toFixed(1);
     document.getElementById("prestige").innerText = prestige;
+    document.getElementById("shiftPay").innerText = ranks[currentRank].wage;
+    document.getElementById("wage").innerText = ranks[currentRank].wage;
     
     updateRank();
     document.getElementById("avatar").innerText = avatars[currentRank];
@@ -680,7 +872,6 @@ function update() {
     document.getElementById("rankNeeded").innerText = formatNumber(Math.floor(needed));
     document.getElementById("rankProgressBar").style.width = progressPercent + "%";
     
-    // Update property counts
     Object.keys(properties).forEach(key => {
         const el = document.getElementById(`count-${key}`);
         if(el) el.innerText = properties[key].count;
@@ -690,7 +881,6 @@ function update() {
     document.getElementById("rentIncome").innerText = rentIncome.toFixed(1);
     document.getElementById("propertiesOwned").innerText = Object.values(properties).reduce((sum, p) => sum + p.count, 0);
     
-    // Update staff counts
     Object.keys(staff).forEach(key => {
         const el = document.getElementById(`count-${key}`);
         if(el) el.innerText = staff[key].count;
@@ -698,15 +888,15 @@ function update() {
     
     document.getElementById("payroll").innerText = calculateExpenses().toFixed(1);
     
-    // Update upgrade counts
-    Object.keys(upgrades).forEach(key => {
+    Object.keys(amenities).forEach(key => {
         const el = document.getElementById(`count-${key}`);
-        if(el) el.innerText = upgrades[key].count;
+        if(el) el.innerText = amenities[key].count;
     });
     
     updateStats();
+    updateMood();
     
-    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, currentRank, properties, staff, upgrades, inmates, security, morale}));
+    localStorage.setItem("save", JSON.stringify({money, totalEarned, prestige, currentRank, properties, staff, amenities, inmates, security, mood}));
 }
 
 function work() {
@@ -715,9 +905,30 @@ function work() {
     totalEarned += shift;
     float("+$" + shift.toFixed(1));
     
-    // Random events
     if(Math.random() < 0.05) triggerEvent();
     
+    update();
+}
+
+function claimPromotion() {
+    if(currentRank < ranks.length - 1) {
+        currentRank++;
+        showPromotion();
+    }
+}
+
+function showPromotion() {
+    const modal = document.getElementById("promotionModal");
+    document.getElementById("promotionRankText").innerText = ranks[currentRank].name;
+    document.getElementById("promotionWage").innerText = ranks[currentRank].wage;
+    document.getElementById("promotionRankNumber").innerText = currentRank + 1;
+    modal.classList.add("active");
+    readyForPromotion = false;
+    document.getElementById("promotionBtn").style.display = "none";
+}
+
+function closePromotion() {
+    document.getElementById("promotionModal").classList.remove("active");
     update();
 }
 
@@ -726,37 +937,28 @@ function triggerEvent() {
         {
             icon: "💥",
             title: "INMATE FIGHT!",
-            desc: "A massive fight broke out in the cafeteria. Lose morale and inmates!",
+            desc: "A massive fight broke out! Inmates angry!",
             choices: [
-                { text: "🛡️ Send Guards ($50)", cost: 50, effect: () => { morale += 10; inmates = Math.max(inmates - 5, 10); } },
-                { text: "🚫 Do Nothing", cost: 0, effect: () => { morale -= 20; inmates = Math.max(inmates - 15, 10); } }
+                { text: "🛡️ Send Guards ($50)", cost: 50, effect: () => { mood = Math.max(0, mood - 15); inmates = Math.max(inmates - 5, 10); } },
+                { text: "🚫 Do Nothing", cost: 0, effect: () => { mood = Math.max(0, mood - 30); inmates = Math.max(inmates - 15, 10); } }
             ]
         },
         {
             icon: "🔥",
             title: "FIRE ON UNIT C!",
-            desc: "A fire broke out! Quick action needed!",
+            desc: "Emergency! Unit C is on fire!",
             choices: [
-                { text: "🚒 Emergency Response ($100)", cost: 100, effect: () => { morale -= 5; } },
-                { text: "⚠️ Evacuate ($200)", cost: 200, effect: () => { morale += 5; security += 10; } }
+                { text: "🚒 Emergency Response ($100)", cost: 100, effect: () => { mood -= 5; } },
+                { text: "⚠️ Full Evacuation ($200)", cost: 200, effect: () => { mood += 5; security += 10; } }
             ]
         },
         {
             icon: "🚨",
             title: "ESCAPE ATTEMPT!",
-            desc: "Inmates trying to escape through the fence!",
+            desc: "Inmates trying to escape!",
             choices: [
-                { text: "🔫 Lockdown ($75)", cost: 75, effect: () => { security += 15; morale -= 10; } },
+                { text: "🔫 Lockdown ($75)", cost: 75, effect: () => { security += 15; mood -= 10; } },
                 { text: "🛑 Block ($150)", cost: 150, effect: () => { security += 25; } }
-            ]
-        },
-        {
-            icon: "😠",
-            title: "RIOT BREWING!",
-            desc: "Inmates are getting restless. Morale is critical!",
-            choices: [
-                { text: "🍽️ Feed them better ($100)", cost: 100, effect: () => { morale += 20; } },
-                { text: "📺 Allow recreation ($50)", cost: 50, effect: () => { morale += 15; } }
             ]
         }
     ];
@@ -818,10 +1020,10 @@ function hireStaff(type, cost) {
     }
 }
 
-function buyUpgrade(type, cost) {
+function buyAmenity(type, cost) {
     if(money >= cost) {
         money -= cost;
-        upgrades[type].count++;
+        amenities[type].count++;
         float(`+1 ${type}`);
         update();
     }
@@ -849,7 +1051,7 @@ function prestigeReset() {
         money = 0;
         Object.keys(properties).forEach(k => properties[k].count = 0);
         Object.keys(staff).forEach(k => staff[k].count = 0);
-        Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
+        Object.keys(amenities).forEach(k => amenities[k].count = 0);
         float(`+${prestige}x Prestige!`);
         update();
     }
@@ -863,7 +1065,7 @@ function hardReset() {
         currentRank = 0;
         Object.keys(properties).forEach(k => properties[k].count = 0);
         Object.keys(staff).forEach(k => staff[k].count = 0);
-        Object.keys(upgrades).forEach(k => upgrades[k].count = 0);
+        Object.keys(amenities).forEach(k => amenities[k].count = 0);
         localStorage.removeItem("save");
         localStorage.removeItem("lastDaily");
         update();
@@ -902,8 +1104,13 @@ setInterval(() => {
 
 // Random events
 setInterval(() => {
-    if(Math.random() < 0.01) triggerEvent();
+    if(Math.random() < 0.01 && mood < 40) triggerEvent();
 }, 10000);
+
+// Update mood and stats
+setInterval(() => {
+    updateMood();
+}, 1000);
 
 // Load
 let save = JSON.parse(localStorage.getItem("save"));
@@ -914,10 +1121,10 @@ if(save) {
     currentRank = save.currentRank || 0;
     properties = save.properties || properties;
     staff = save.staff || staff;
-    upgrades = save.upgrades || upgrades;
+    amenities = save.amenities || amenities;
     inmates = save.inmates || 50;
     security = save.security || 50;
-    morale = save.morale || 75;
+    mood = save.mood || 60;
 }
 
 update();
